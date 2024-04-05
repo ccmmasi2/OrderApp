@@ -3,27 +3,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Orders.Solution.Core.Models
 {
-    public class OrderDtl
+    [Table("ORDERDTLS")]
+    public class OrderDtlDTO
     {
         [Key]
         public int ID { get; set; }
 
 
-        [Required(ErrorMessage = "Required field")]
+        [Column("QTY"), Required]
         public int Qty { get; set; }
 
 
-        [Required(ErrorMessage = "Required field")]
+        [Column("PRICE"), Required]
         public double Price { get; set; }
 
 
         public int IdOrderHeader { get; set; }
         [ForeignKey("IdOrderHeader")]
-        public OrderHeader OrderHeader { get; set; }
+        public OrderHeaderDTO OrderHeader { get; set; }
 
 
         public int IdProduct { get; set; }
         [ForeignKey("IdProduct")]
-        public Product Product { get; set; }
+        public ProductDTO Product { get; set; }
     }
 }

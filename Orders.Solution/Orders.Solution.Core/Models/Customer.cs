@@ -3,42 +3,39 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Orders.Solution.Core.Models
 {
-    public class Customer
+    [Table("CUSTOMERS")]
+    public class CustomerDTO
     {
         [Key]
         public int ID { get; set; }
 
 
-        [Required(ErrorMessage = "Required field")]
+        [Column("IDENTIFICATION"), Required]
         public double Identification { get; set; }
 
 
-        [Required(ErrorMessage = "Required field")]
-        [MaxLength(50, ErrorMessage = "The length of the field should be less than 50")]
+        [Column("NAME"), MaxLength(50), Required]
         public string Name { get; set; }
 
 
-        [Required(ErrorMessage = "Required field")]
-        [MaxLength(50, ErrorMessage = "The length of the field should be less than 50")]
+        [Column("LASTNAME"), MaxLength(50), Required]
         public string LastName { get; set; }
 
 
-        [Required(ErrorMessage = "Required field")]
-        [DataType(DataType.Date)]
+        [Column("BIRTHDAY"), Required]
         public DateTime BirthDate { get; set; }
 
 
-        [Required(ErrorMessage = "Required field")]
-        [MaxLength(100, ErrorMessage = "The length of the field should be less than 100")]
+        [Column("EMAIL"), MaxLength(100), Required]
         public string Email { get; set; }
 
 
-        [MaxLength(50, ErrorMessage = "The length of the field should be less than 50")]
+        [Column("PHONENUMBER"), MaxLength(50)]
         public string PhoneNumber { get; set; }
 
 
         public int IdIdentificationType { get; set; }
-        [ForeignKey("IdIdentificationType")]
-        public IdentificationType IdentificationType { get; set; }
+        [ForeignKey("IDIDENTIFICATIONTYPE")]
+        public IdentificationTypeDTO IdentificationType { get; set; }
     }
 }

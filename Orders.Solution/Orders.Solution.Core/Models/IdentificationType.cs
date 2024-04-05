@@ -1,15 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Orders.Solution.Core.Models
 {
-    public class IdentificationType
+    [Table("IDENTIFICATIONTYPES")]
+    public class IdentificationTypeDTO
     {
         [Key]
         public int ID { get; set; }
 
 
-        [Required(ErrorMessage = "Required field")]
-        [MaxLength(50, ErrorMessage = "The length of the field should be less than 50")]
+        [Column("NAME"), MaxLength(4), Required]
         public string Name { get; set; }
     }
 }

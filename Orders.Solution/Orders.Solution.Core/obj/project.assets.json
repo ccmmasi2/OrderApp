@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\u586646\\Downloads\\test\\Orders.Solution\\Orders.Solution.Core\\Orders.Solution.Core.csproj",
+      "projectUniqueName": "C:\\Study\\OrderApp\\Orders.Solution\\Orders.Solution.Core\\Orders.Solution.Core.csproj",
       "projectName": "Orders.Solution.Core",
-      "projectPath": "C:\\Users\\u586646\\Downloads\\test\\Orders.Solution\\Orders.Solution.Core\\Orders.Solution.Core.csproj",
+      "projectPath": "C:\\Study\\OrderApp\\Orders.Solution\\Orders.Solution.Core\\Orders.Solution.Core.csproj",
       "packagesPath": "C:\\Users\\u586646\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\u586646\\Downloads\\test\\Orders.Solution\\Orders.Solution.Core\\obj\\",
+      "outputPath": "C:\\Study\\OrderApp\\Orders.Solution\\Orders.Solution.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
