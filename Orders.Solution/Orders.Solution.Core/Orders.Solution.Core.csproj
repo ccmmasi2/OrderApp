@@ -7,9 +7,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Customer.cs" />
+    <Compile Remove="Models\IdentificationType.cs" />
+    <Compile Remove="Models\OrderDtl.cs" />
+    <Compile Remove="Models\OrderHeader.cs" />
+    <Compile Remove="Models\Product.cs" />
+    <Compile Remove="Models\Stock.cs" />
+    <Compile Remove="ObjectRepository\Implementation\CustomerRepository.cs" />
+    <Compile Remove="ObjectRepository\Implementation\IdentificationTypeRepository.cs" />
+    <Compile Remove="ObjectRepository\Implementation\OrderDtlRepository.cs" />
+    <Compile Remove="ObjectRepository\Implementation\OrderHeaderRepository.cs" />
+    <Compile Remove="ObjectRepository\Implementation\ProductRepository.cs" />
+    <Compile Remove="ObjectRepository\Implementation\StockRepository.cs" />
+    <Compile Remove="ObjectRepository\Interface\ICustomerRepository.cs" />
+    <Compile Remove="ObjectRepository\Interface\IIdentificationTypeRepository.cs" />
+    <Compile Remove="ObjectRepository\Interface\IOrderDtlRepository.cs" />
+    <Compile Remove="ObjectRepository\Interface\IOrderHeaderRepository.cs" />
+    <Compile Remove="ObjectRepository\Interface\IProductRepository.cs" />
+    <Compile Remove="ObjectRepository\Interface\IStockRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\SeedData\" />
-    <Folder Include="Data\Migrations\" />
-    <Folder Include="Configuration\" />
   </ItemGroup>
 
   <ItemGroup>

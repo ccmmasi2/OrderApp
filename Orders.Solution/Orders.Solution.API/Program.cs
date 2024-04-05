@@ -28,12 +28,12 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn
 
 builder.Services.AddScoped<IDBInitializer, DBInitializer>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IIdentificationTypeRepository, IdentificationTypeRepository>();
-builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IStockRepository, StockRepository>();
-builder.Services.AddScoped<IOrderHeaderRepository, OrderHeaderRepository>();
-builder.Services.AddScoped<IOrderDtlRepository, OrderDtlRepository>();
+//builder.Services.AddScoped<IIdentificationTypeRepository, IdentificationTypeRepository>();
+//builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+//builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//builder.Services.AddScoped<IStockRepository, StockRepository>();
+//builder.Services.AddScoped<IOrderHeaderRepository, OrderHeaderRepository>();
+//builder.Services.AddScoped<IOrderDtlRepository, OrderDtlRepository>();
 
 var app = builder.Build();
 
