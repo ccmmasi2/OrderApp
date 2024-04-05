@@ -15,7 +15,7 @@ namespace Orders.Solution.Core.Models
 
 
         public int IdProduct { get; set; }
-        [ForeignKey("IdProduct")]
+        [ForeignKey("IDPRODUCT")]
         public ProductDTO Product { get; set; }
     }
 }

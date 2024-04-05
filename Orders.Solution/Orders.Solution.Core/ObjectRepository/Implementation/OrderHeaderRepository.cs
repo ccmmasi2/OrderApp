@@ -5,7 +5,7 @@ using Orders.Solution.Core.ObjectRepository.Interface;
 
 namespace Orders.Solution.Core.ObjectRepository.Implementation
 {
-    public class OrderHeaderRepository : Repository<OrderHeaderDTO>, IOrderHeaderRepository
+    public class OrderHeaderRepository : Repository<OrderHdrDTO>, IOrderHeaderRepository
     {
         private readonly AppDbContext _dbcontext;
 

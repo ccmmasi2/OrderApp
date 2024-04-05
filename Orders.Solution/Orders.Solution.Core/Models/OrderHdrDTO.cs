@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Orders.Solution.Core.Models
 {
-    [Table("ORDERHEADERS")]
-    public class OrderHeaderDTO
+    [Table("ORDERHDRS")]
+    public class OrderHdrDTO
     {
         [Key]
         public int ID { get; set; }
@@ -15,7 +15,7 @@ namespace Orders.Solution.Core.Models
 
 
         public int IdCustomer { get; set; }
-        [ForeignKey("IdCustomer")]
+        [ForeignKey("IDCUSTOMER")]
         public CustomerDTO Customer { get; set; }
     }
 }

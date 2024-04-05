@@ -23,7 +23,7 @@ namespace Orders.Solution.Core.Models
 
 
         [Column("BIRTHDAY"), Required]
-        public DateTime BirthDate { get; set; }
+        public DateTime BirthDay { get; set; }
 
 
         [Column("EMAIL"), MaxLength(100), Required]

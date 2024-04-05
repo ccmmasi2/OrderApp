@@ -19,12 +19,12 @@ namespace Orders.Solution.Core.Models
 
 
         public int IdOrderHeader { get; set; }
-        [ForeignKey("IdOrderHeader")]
-        public OrderHeaderDTO OrderHeader { get; set; }
+        [ForeignKey("IDORDERHEADER")]
+        public OrderHdrDTO OrderHeader { get; set; }
 
 
         public int IdProduct { get; set; }
-        [ForeignKey("IdProduct")]
+        [ForeignKey("IDPRODUCT")]
         public ProductDTO Product { get; set; }
     }
 }
