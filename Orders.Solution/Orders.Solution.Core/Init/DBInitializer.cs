@@ -22,9 +22,9 @@ namespace Orders.Solution.Core.Init
                     _db.Database.Migrate();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
             //if (!_db.ProcessPpal.Any())
