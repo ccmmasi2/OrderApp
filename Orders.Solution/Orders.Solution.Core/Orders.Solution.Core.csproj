@@ -9,13 +9,15 @@
   <ItemGroup>
     <Folder Include="Data\SeedData\" />
     <Folder Include="Data\Migrations\" />
-    <Folder Include="ObjectRepository\Interface\" />
-    <Folder Include="Init\" />
-    <Folder Include="ObjectRepository\" />
-    <Folder Include="ObjectRepository\Implementation\" />
     <Folder Include="Configuration\" />
-    <Folder Include="Repository\Implementation\" />
-    <Folder Include="Repository\Interface\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
   </ItemGroup>
 
 </Project>
