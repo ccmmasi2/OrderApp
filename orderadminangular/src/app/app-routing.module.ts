@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductListComponent } from './modules/catalog/product-list/product-list.component';
+import { HomeComponent } from './modules/home/home/home.component';
 
 const routes: Routes = [ 
   {
     path: '',
-    component: ProductListComponent
+    component: HomeComponent
   }, 
   {
     path: 'input',
