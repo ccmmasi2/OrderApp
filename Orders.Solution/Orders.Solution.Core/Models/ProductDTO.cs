@@ -15,6 +15,14 @@ namespace Orders.Solution.Core.Models
         public string Name { get; set; }
 
 
+        [Column("PRODUCTCODE"), MaxLength(10), Required]
+        public string ProductCode { get; set; }
+
+
+        [Column("PRICE"), Required]
+        public double Price { get; set; }
+
+
         [ForeignKey("CATEGORIES")]
         public int CategoryId { get; set; }
 

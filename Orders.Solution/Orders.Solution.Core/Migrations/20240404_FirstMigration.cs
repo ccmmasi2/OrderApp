@@ -68,6 +68,8 @@ namespace Orders.Solution.Core.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ProductCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Price = table.Column<double>(type: "numeric(18,2)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                 },
                 constraints: table =>

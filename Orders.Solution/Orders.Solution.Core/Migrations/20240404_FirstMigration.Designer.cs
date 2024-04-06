@@ -115,7 +115,16 @@ namespace Orders.Solution.Core.Migrations
                     .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnType("nvarchar(50)");
-                 
+
+                b.Property<string>("PRODUCTCODE")
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .HasColumnType("nvarchar(10)");
+
+                b.Property<int>("PRICE")
+                    .IsRequired()
+                    .HasColumnType("double(18,2)");
+
                 b.Property<int>("CATEGORYID")
                     .IsRequired()
                     .HasColumnType("int");
