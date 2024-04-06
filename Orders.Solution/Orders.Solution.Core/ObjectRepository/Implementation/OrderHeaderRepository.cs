@@ -5,11 +5,11 @@ using Orders.Solution.Core.ObjectRepository.Interface;
 
 namespace Orders.Solution.Core.ObjectRepository.Implementation
 {
-    public class OrderHeaderRepository : Repository<OrderHdrDTO>, IOrderHeaderRepository
+    public class OrderHdrRepository : Repository<OrderHdrDTO>, IOrderHdrRepository
     {
         private readonly AppDbContext _dbcontext;
 
-        public OrderHeaderRepository(AppDbContext dbcontext) : base(dbcontext)
+        public OrderHdrRepository(AppDbContext dbcontext) : base(dbcontext)
         {
             _dbcontext = dbcontext;
         }

@@ -14,7 +14,7 @@ namespace Orders.Solution.Core.Data
         public DbSet<CustomerDTO> Customers { get; set; }
         public DbSet<ProductDTO> Products { get; set; }
         public DbSet<StockDTO> Stock { get; set; }
-        public DbSet<OrderHdrDTO> OrderHeaders { get; set; }
+        public DbSet<OrderHdrDTO> OrderHdrs { get; set; }
         public DbSet<OrderDtlDTO> OrderDtls { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

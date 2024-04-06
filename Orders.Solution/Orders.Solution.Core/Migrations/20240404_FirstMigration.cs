@@ -104,7 +104,7 @@ namespace Orders.Solution.Core.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ORDERHEADERS",
+                name: "ORDERHDRS",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -114,9 +114,9 @@ namespace Orders.Solution.Core.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ORDERHEADERS", x => x.ID);
+                    table.PrimaryKey("PK_ORDERHDRS", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ORDERHEADERS_CUSTOMERS",
+                        name: "FK_ORDERHDRS_CUSTOMERS",
                         column: x => x.CustomerId,
                         principalTable: "CUSTOMERS",
                         principalColumn: "ID",
@@ -131,16 +131,16 @@ namespace Orders.Solution.Core.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Qty = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "numeric(18,2)", nullable: false),
-                    OrderHeaderId = table.Column<int>(type: "int", nullable: false),
+                    OrderHdrId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ORDERDTLS", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ORDERDTLS_ORDERHEADERS",
-                        column: x => x.OrderHeaderId,
-                        principalTable: "ORDERHEADERS",
+                        name: "FK_ORDERDTLS_ORDERHDRS",
+                        column: x => x.OrderHdrId,
+                        principalTable: "ORDERHDRS",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(

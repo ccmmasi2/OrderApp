@@ -19,13 +19,13 @@ namespace Orders.Solution.Core.Models
 
 
         [ForeignKey("ORDERHDRS")]
-        public int OrderHeaderId { get; set; }
+        public int OrderHdrId { get; set; }
 
 
         [ForeignKey("PRODUCTS")]
         public int ProductId { get; set; }
 
-        public virtual OrderHdrDTO OrderHeader { get; set; }
+        public virtual OrderHdrDTO OrderHdr { get; set; }
 
         public virtual ProductDTO Product { get; set; }
     }

@@ -210,7 +210,7 @@ namespace Orders.Solution.Core.Migrations
                     .IsRequired()
                     .HasColumnType("double(18,2)");
 
-                b.Property<int>("ORDERHEADERID")
+                b.Property<int>("ORDERHDRID")
                     .IsRequired()
                     .HasColumnType("int");
 

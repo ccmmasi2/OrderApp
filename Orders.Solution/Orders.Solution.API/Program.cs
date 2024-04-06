@@ -32,7 +32,7 @@ builder.Services.AddScoped<IIdentificationTypeRepository, IdentificationTypeRepo
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IStockRepository, StockRepository>();
-builder.Services.AddScoped<IOrderHeaderRepository, OrderHeaderRepository>();
+builder.Services.AddScoped<IOrderHdrRepository, OrderHdrRepository>();
 builder.Services.AddScoped<IOrderDtlRepository, OrderDtlRepository>();
 
 var app = builder.Build();
