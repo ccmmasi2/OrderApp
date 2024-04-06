@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Orders.Solution.Core.Models
@@ -14,8 +15,9 @@ namespace Orders.Solution.Core.Models
         public string Name { get; set; }
 
 
-        public int IdCategory { get; set; }
-        [ForeignKey("IDCATEGORY")]
+        [ForeignKey("CATEGORIES")]
+        public int CategoryId { get; set; }
+
         public virtual CategoryDTO Category { get; set; }
     }
 }

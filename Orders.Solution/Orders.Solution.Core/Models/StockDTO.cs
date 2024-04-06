@@ -14,8 +14,9 @@ namespace Orders.Solution.Core.Models
         public int Qty { get; set; }
 
 
-        public int IdProduct { get; set; }
-        [ForeignKey("IDPRODUCT")]
+        [Column("PRODUCTS"), Required]
+        public int ProductId { get; set; }
+
         public virtual ProductDTO Product { get; set; }
     }
 }

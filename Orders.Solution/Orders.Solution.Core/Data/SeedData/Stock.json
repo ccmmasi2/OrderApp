@@ -1,62 +1,62 @@
 ﻿[
   {
-    "IdProduct": 1,
+    "ProductId": 1,
     "Qty": 100
   },
   {
-    "IdProduct": 2,
+    "ProductId": 2,
     "Qty": 200
   },
   {
-    "IdProduct": 3,
+    "ProductId": 3,
     "Qty": 300
   },
   {
-    "IdProduct": 4,
+    "ProductId": 4,
     "Qty": 400
   },
   {
-    "IdProduct": 5,
+    "ProductId": 5,
     "Qty": 500
   },
   {
-    "IdProduct": 6,
+    "ProductId": 6,
     "Qty": 600
   },
   {
-    "IdProduct": 7,
+    "ProductId": 7,
     "Qty": 700
   },
   {
-    "IdProduct": 8,
+    "ProductId": 8,
     "Qty": 800
   },
   {
-    "IdProduct": 9,
+    "ProductId": 9,
     "Qty": 900
   },
   {
-    "IdProduct": 10,
+    "ProductId": 10,
     "Qty": 1000
   },
   {
-    "IdProduct": 11,
+    "ProductId": 11,
     "Qty": 1100
   },
   {
-    "IdProduct": 12,
+    "ProductId": 12,
     "Qty": 1200
   },
   {
-    "IdProduct": 13,
+    "ProductId": 13,
     "Qty": 1300
   },
   {
-    "IdProduct": 14,
+    "ProductId": 14,
     "Qty": 1400
   },
   {
-    "IdProduct": 15,
+    "ProductId": 15,
     "Qty": 1500
   }
 ]

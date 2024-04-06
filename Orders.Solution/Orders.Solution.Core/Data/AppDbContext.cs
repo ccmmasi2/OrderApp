@@ -10,12 +10,12 @@ namespace Orders.Solution.Core.Data
         { }
 
         public DbSet<CategoryDTO> Categories { get; set; }
-        public DbSet<IdentificationTypeDTO> IdentificationTypes { get; set; }
-        public DbSet<CustomerDTO> Customers { get; set; }
+        //public DbSet<IdentificationTypeDTO> IdentificationTypes { get; set; }
+        //public DbSet<CustomerDTO> Customers { get; set; }
         public DbSet<ProductDTO> Products { get; set; }
-        public DbSet<StockDTO> Stock { get; set; }
-        public DbSet<OrderHdrDTO> OrderHeaders { get; set; }
-        public DbSet<OrderDtlDTO> OrderDtls { get; set; }
+        //public DbSet<StockDTO> Stock { get; set; }
+        //public DbSet<OrderHdrDTO> OrderHeaders { get; set; }
+        //public DbSet<OrderDtlDTO> OrderDtls { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

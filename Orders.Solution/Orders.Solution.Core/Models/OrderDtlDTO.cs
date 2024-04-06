@@ -18,13 +18,15 @@ namespace Orders.Solution.Core.Models
         public double Price { get; set; }
 
 
-        public int IdOrderHeader { get; set; }
-        [ForeignKey("IDORDERHEADER")]
+        [Column("ORDERHDRS"), Required]
+        public int OrderHeaderId { get; set; }
+
+
+        [Column("PRODUCTS"), Required]
+        public int ProductId { get; set; }
+
         public virtual OrderHdrDTO OrderHeader { get; set; }
 
-
-        public int IdProduct { get; set; }
-        [ForeignKey("IDPRODUCT")]
         public virtual ProductDTO Product { get; set; }
     }
 }

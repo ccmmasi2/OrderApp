@@ -1,66 +1,66 @@
 ﻿[
   {
     "Name": "Carrot",
-    "IdCategory": 1
+    "CategoryId": 1
   },
   {
     "Name": "Lettuce",
-    "IdCategory": 1
+    "CategoryId": 1
   },
   {
     "Name": "Tomato",
-    "IdCategory": 1
+    "CategoryId": 1
   },
   {
     "Name": "Onion",
-    "IdCategory": 1
+    "CategoryId": 1
   },
   {
     "Name": "Pineapple",
-    "IdCategory": 2
+    "CategoryId": 2
   },
   {
     "Name": "Apple",
-    "IdCategory": 2
+    "CategoryId": 2
   },
   {
     "Name": "Grape",
-    "IdCategory": 2
+    "CategoryId": 2
   },
   {
     "Name": "Pear",
-    "IdCategory": 2
+    "CategoryId": 2
   },
   {
     "Name": "Pencil",
-    "IdCategory": 3
+    "CategoryId": 3
   },
   {
     "Name": "Eraser",
-    "IdCategory": 3
+    "CategoryId": 3
   },
   {
     "Name": "Book",
-    "IdCategory": 3
+    "CategoryId": 3
   },
   {
     "Name": "Rule",
-    "IdCategory": 3
+    "CategoryId": 3
   },
   {
     "Name": "PC",
-    "IdCategory": 4
+    "CategoryId": 4
   },
   {
     "Name": "Diskette",
-    "IdCategory": 4
+    "CategoryId": 4
   },
   {
     "Name": "Usb",
-    "IdCategory": 4
+    "CategoryId": 4
   },
   {
     "Name": "Data",
-    "IdCategory": 4
+    "CategoryId": 4
   }
 ]

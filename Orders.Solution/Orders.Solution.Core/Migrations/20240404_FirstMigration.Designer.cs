@@ -91,7 +91,7 @@ namespace Orders.Solution.Core.Migrations
                     .HasMaxLength(50)
                     .HasColumnType("nvarchar(50)");
 
-                b.Property<int>("IDIDENTIFICATIONTYPE")
+                b.Property<int>("IDENTIFICATIONTYPEID")
                     .IsRequired()
                     .HasColumnType("int");
 
@@ -116,7 +116,7 @@ namespace Orders.Solution.Core.Migrations
                     .HasMaxLength(50)
                     .HasColumnType("nvarchar(50)");
                  
-                b.Property<int>("IDCATEGORY")
+                b.Property<int>("CATEGORYID")
                     .IsRequired()
                     .HasColumnType("int");
 
@@ -140,7 +140,7 @@ namespace Orders.Solution.Core.Migrations
                     .IsRequired()
                     .HasColumnType("int");
 
-                b.Property<int>("IDPRODUCT")
+                b.Property<int>("PRODUCTID")
                     .IsRequired()
                     .HasColumnType("int");
 
@@ -162,7 +162,7 @@ namespace Orders.Solution.Core.Migrations
                     .IsRequired()
                     .HasColumnType("int");
 
-                b.Property<int>("IDPRODUCT")
+                b.Property<int>("PRODUCTID")
                     .IsRequired()
                     .HasColumnType("int");
 
@@ -184,7 +184,7 @@ namespace Orders.Solution.Core.Migrations
                     .IsRequired()
                     .HasColumnType("Date");
 
-                b.Property<int>("IDCUSTOMER")
+                b.Property<int>("CUSTOMERID")
                     .IsRequired()
                     .HasColumnType("int");
 
@@ -210,11 +210,11 @@ namespace Orders.Solution.Core.Migrations
                     .IsRequired()
                     .HasColumnType("double(18,2)");
 
-                b.Property<int>("IDORDERHEADER")
+                b.Property<int>("ORDERHEADERID")
                     .IsRequired()
                     .HasColumnType("int");
 
-                b.Property<int>("IDPRODUCT")
+                b.Property<int>("PRODUCTID")
                     .IsRequired()
                     .HasColumnType("int");
 
