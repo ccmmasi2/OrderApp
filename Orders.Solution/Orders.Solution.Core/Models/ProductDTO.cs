@@ -16,6 +16,6 @@ namespace Orders.Solution.Core.Models
 
         public int IdCategory { get; set; }
         [ForeignKey("IDCATEGORY")]
-        public CategoryDTO Category { get; set; }
+        public virtual CategoryDTO Category { get; set; }
     }
 }

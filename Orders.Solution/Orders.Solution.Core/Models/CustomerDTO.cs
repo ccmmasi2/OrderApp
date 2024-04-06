@@ -36,6 +36,6 @@ namespace Orders.Solution.Core.Models
 
         public int IdIdentificationType { get; set; }
         [ForeignKey("IDIDENTIFICATIONTYPE")]
-        public IdentificationTypeDTO IdentificationType { get; set; }
+        public virtual IdentificationTypeDTO IdentificationType { get; set; }
     }
 }

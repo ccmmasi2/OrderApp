@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Orders.Solution.Core.Data;
+using Orders.Solution.Core.Models;
 using System.Text.Json;
 
 namespace Orders.Solution.Core.Init
@@ -27,32 +28,42 @@ namespace Orders.Solution.Core.Init
                 throw ex;
             }
 
-            //if (!_db.ProcessPpal.Any())
-            //{
-            //    var LProcessDataJson = File.ReadAllText("../Matrix.Multiplication.AccessData/Data/SeedData/ProcessPpal.json");
-            //    var LProcess = JsonSerializer.Deserialize<List<ProcessPpal>>(LProcessDataJson);
-            //    _db.ProcessPpal.AddRange(LProcess);
-            //}
+            if (!_db.Categories.Any())
+            {
+                var LDataJson = File.ReadAllText("../Orders.Solution.Core/Data/SeedData/Categories.json");
+                var LData = JsonSerializer.Deserialize<List<CategoryDTO>>(LDataJson);
+                _db.Categories.AddRange(LData);
+            }
 
-            //if (_db.ChangeTracker.HasChanges())
-            //    _db.SaveChanges();
+            if (_db.ChangeTracker.HasChanges())
+                _db.SaveChanges();
 
-            //if (!_db.ProcessMatrix.Any())
-            //{
-            //    var LProcessMatrixDataJson = File.ReadAllText("../Matrix.Multiplication.AccessData/Data/SeedData/ProcessMatrix.json");
-            //    var LProcessMatrix = JsonSerializer.Deserialize<List<ProcessMatrix>>(LProcessMatrixDataJson);
-            //    _db.ProcessMatrix.AddRange(LProcessMatrix);
-            //}
+            if (!_db.IdentificationTypes.Any())
+            {
+                var LDataJson = File.ReadAllText("../Orders.Solution.Core/Data/SeedData/IdentificationTypes.json");
+                var LData = JsonSerializer.Deserialize<List<IdentificationTypeDTO>>(LDataJson);
+                _db.IdentificationTypes.AddRange(LData);
+            }
 
-            //if (_db.ChangeTracker.HasChanges())
-            //    _db.SaveChanges();
+            if (_db.ChangeTracker.HasChanges())
+                _db.SaveChanges();
 
-            //if (!_db.ProcessMatrixDetail.Any())
-            //{
-            //    var LProcessMatrixDetailDataJson = File.ReadAllText("../Matrix.Multiplication.AccessData/Data/SeedData/ProcessMatrixDetail.json");
-            //    var LProcessMatrixDetail = JsonSerializer.Deserialize<List<ProcessMatrixDetail>>(LProcessMatrixDetailDataJson);
-            //    _db.ProcessMatrixDetail.AddRange(LProcessMatrixDetail);
-            //}
+            if (!_db.Products.Any())
+            {
+                var LDataJson = File.ReadAllText("../Orders.Solution.Core/Data/SeedData/Products.json");
+                var LData = JsonSerializer.Deserialize<List<ProductDTO>>(LDataJson);
+                _db.Products.AddRange(LData);
+            }
+
+            if (_db.ChangeTracker.HasChanges())
+                _db.SaveChanges();
+
+            if (!_db.Stock.Any())
+            {
+                var LDataJson = File.ReadAllText("../Orders.Solution.Core/Data/SeedData/Stock.json");
+                var LData = JsonSerializer.Deserialize<List<StockDTO>>(LDataJson);
+                _db.Stock.AddRange(LData);
+            }
 
             if (_db.ChangeTracker.HasChanges())
                 _db.SaveChanges();

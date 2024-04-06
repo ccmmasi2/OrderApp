@@ -16,6 +16,6 @@ namespace Orders.Solution.Core.Models
 
         public int IdProduct { get; set; }
         [ForeignKey("IDPRODUCT")]
-        public ProductDTO Product { get; set; }
+        public virtual ProductDTO Product { get; set; }
     }
 }
