@@ -14,7 +14,7 @@ namespace Orders.Solution.Core.Models
         public DateTime OrderDate { get; set; }
 
 
-        [Column("CUSTOMERS"), Required]
+        [ForeignKey("CUSTOMERS")]
         public int CustomerId { get; set; }
 
         public virtual CustomerDTO Customer { get; set; }

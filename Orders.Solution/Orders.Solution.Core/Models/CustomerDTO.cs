@@ -34,7 +34,7 @@ namespace Orders.Solution.Core.Models
         public string PhoneNumber { get; set; }
 
 
-        [Column("IDENTIFICATIONTYPES"), Required]
+        [ForeignKey("IDENTIFICATIONTYPES")]
         public int IdentificationTypeId { get; set; }
 
         public virtual IdentificationTypeDTO IdentificationType { get; set; }
