@@ -5,12 +5,12 @@
     "baseUrl": "./src",
     "paths": {
       "@app/*": ["app/*"],
-      "@shared/*": ["app/commonresources/shared/*"],
-      "@components/*": ["app/commonresources/shared/components/*"],
+      "@shared/*": ["app/shared/*"],
+      "@components/*": ["app/shared/components/*"],
       "@env/*": ["environment/*"],
       "@modules/*": ["app/modules/*"],
       "@data/*": ["app/data/*"],
-      "@layout/*": ["app/commonresources/layout/*"]
+      "@layout/*": ["app/layout/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

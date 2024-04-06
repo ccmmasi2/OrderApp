@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { EventService } from 'src/app/commonresources/services/EventService';
+import { EventService } from '@app/services/EventService';
 
 @Component({
   selector: 'app-action-dialog',

@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './commonresources/layout/header/header.component';
-import { MainPageComponent } from './commonresources/layout/main-page/main-page.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { MainPageComponent } from './layout/main-page/main-page.component';
 import { CatalogModule } from './modules/catalog/catalog.module';
-import { MaterialModule } from './commonresources/material/material.module';
+import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { EventService } from './commonresources/services/EventService';
+import { EventService } from './services/EventService';
 
 @NgModule({
   declarations: [

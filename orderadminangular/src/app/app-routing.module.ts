@@ -6,12 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: ProductListComponent
-  }, 
-  {
-    path: 'input',
-    loadChildren: () =>
-      //import('@modules/catalog/catalog.module').then((m) => m.InputModule), 
-  }, 
+  } 
 ];
 
 @NgModule({
