@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './layout/header/header.component';
-import { MainPageComponent } from './layout/main-page/main-page.component';
 import { CatalogModule } from './modules/catalog/catalog.module';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +13,6 @@ import { EventService } from './services/EventService';
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainPageComponent
   ],
   imports: [
     BrowserModule,
