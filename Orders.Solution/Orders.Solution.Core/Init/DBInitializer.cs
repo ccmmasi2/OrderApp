@@ -38,15 +38,15 @@ namespace Orders.Solution.Core.Init
             if (_db.ChangeTracker.HasChanges())
                 _db.SaveChanges();
 
-            //if (!_db.IdentificationTypes.Any())
-            //{
-            //    var LDataJson = File.ReadAllText("../Orders.Solution.Core/Data/SeedData/IdentificationTypes.json");
-            //    var LData = JsonSerializer.Deserialize<List<IdentificationTypeDTO>>(LDataJson);
-            //    _db.IdentificationTypes.AddRange(LData);
-            //}
+            if (!_db.IdentificationTypes.Any())
+            {
+                var LDataJson = File.ReadAllText("../Orders.Solution.Core/Data/SeedData/IdentificationTypes.json");
+                var LData = JsonSerializer.Deserialize<List<IdentificationTypeDTO>>(LDataJson);
+                _db.IdentificationTypes.AddRange(LData);
+            }
 
-            //if (_db.ChangeTracker.HasChanges())
-            //    _db.SaveChanges();
+            if (_db.ChangeTracker.HasChanges())
+                _db.SaveChanges();
 
             if (!_db.Products.Any())
             {
@@ -58,15 +58,15 @@ namespace Orders.Solution.Core.Init
             if (_db.ChangeTracker.HasChanges())
                 _db.SaveChanges();
 
-            //if (!_db.Stock.Any())
-            //{
-            //    var LDataJson = File.ReadAllText("../Orders.Solution.Core/Data/SeedData/Stock.json");
-            //    var LData = JsonSerializer.Deserialize<List<StockDTO>>(LDataJson);
-            //    _db.Stock.AddRange(LData);
-            //}
+            if (!_db.Stock.Any())
+            {
+                var LDataJson = File.ReadAllText("../Orders.Solution.Core/Data/SeedData/Stock.json");
+                var LData = JsonSerializer.Deserialize<List<StockDTO>>(LDataJson);
+                _db.Stock.AddRange(LData);
+            }
 
-            //if (_db.ChangeTracker.HasChanges())
-            //    _db.SaveChanges();
+            if (_db.ChangeTracker.HasChanges())
+                _db.SaveChanges();
         }
     }
 }
