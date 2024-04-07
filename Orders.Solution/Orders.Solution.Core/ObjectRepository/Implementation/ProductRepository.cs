@@ -1,8 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Orders.Solution.Core.BaseRepository;
 using Orders.Solution.Core.Data;
 using Orders.Solution.Core.Models;
 using Orders.Solution.Core.ObjectRepository.Interface;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Orders.Solution.Core.ObjectRepository.Implementation
 {
@@ -44,6 +47,17 @@ namespace Orders.Solution.Core.ObjectRepository.Implementation
 
             var products = await query.Skip((page - 1) * sizePage)
                             .Take(sizePage)
+                            .Select(p => new ProductDTO
+                            {
+                                ID = p.ID,
+                                Name = p.Name,
+                                Description = p.Description,
+                                ProductCode = p.ProductCode,
+                                Price = p.Price,
+                                CategoryId = p.CategoryId,
+                                StockQty = _dbcontext.Stock.Where(s => s.ProductId == p.ID).Sum(s => s.Qty),
+                                OrderQty = 0
+                            })
                             .ToListAsync();
 
             return new PagedList<ProductDTO>(products, totalRecords, page, sizePage);

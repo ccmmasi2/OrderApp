@@ -5,4 +5,6 @@ export class ProductDTO {
     productCode: string = '';
     price: number = 0;
     categoryId: number = 0;
+    stockQty: number = 0;
+    orderQty: number = 0;
 }

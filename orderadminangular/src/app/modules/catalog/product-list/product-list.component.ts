@@ -17,6 +17,8 @@ export class ProductListComponent implements OnInit {
     'Description',
     'Product_Code',
     'Price',
+    'Stock',
+    'Actions',
   ];
 
   categoryOptions: CategoryDTO[] = [];
@@ -112,4 +114,18 @@ export class ProductListComponent implements OnInit {
     'Id': 'id',
     'name': 'name',
   };
+
+  incrementQty(product: ProductDTO) {
+    if (product.orderQty < product.stockQty) {
+      product.orderQty++;
+    } else {
+      console.error('no stock');
+    }
+  }
+  
+  decrementQty(product: ProductDTO) {
+    if (product.orderQty > 0) {
+      product.orderQty--;
+    }
+  }
 }
