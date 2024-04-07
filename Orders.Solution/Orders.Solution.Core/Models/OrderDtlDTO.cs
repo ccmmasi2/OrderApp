@@ -15,7 +15,7 @@ namespace Orders.Solution.Core.Models
 
 
         [Column("PRICE"), Required]
-        public double Price { get; set; }
+        public long Price { get; set; }
 
 
         [ForeignKey("ORDERHDRS")]

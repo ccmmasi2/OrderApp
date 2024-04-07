@@ -66,7 +66,7 @@ namespace Orders.Solution.Core.Migrations
 
                 b.Property<int>("IDENTIFICATION")
                     .IsRequired()
-                    .HasColumnType("double(18)");
+                    .HasColumnType("bigint");
 
                 b.Property<string>("NAME")
                     .IsRequired()
@@ -121,9 +121,9 @@ namespace Orders.Solution.Core.Migrations
                     .HasMaxLength(10)
                     .HasColumnType("nvarchar(10)");
 
-                b.Property<int>("PRICE")
+                b.Property<long>("PRICE")
                     .IsRequired()
-                    .HasColumnType("double(18,2)");
+                    .HasColumnType("bigint");
 
                 b.Property<int>("CATEGORYID")
                     .IsRequired()
@@ -215,9 +215,9 @@ namespace Orders.Solution.Core.Migrations
                     .IsRequired()
                     .HasColumnType("int");
 
-                b.Property<int>("PRICE")
+                b.Property<long>("PRICE")
                     .IsRequired()
-                    .HasColumnType("double(18,2)");
+                    .HasColumnType("bigint");
 
                 b.Property<int>("ORDERHDRID")
                     .IsRequired()

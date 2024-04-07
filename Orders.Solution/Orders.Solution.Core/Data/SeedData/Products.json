@@ -1,66 +1,98 @@
 ﻿[
   {
     "Name": "Carrot",
-    "CategoryId": 1
+    "CategoryId": 1,
+    "ProductCode": "ABC121",
+    "Price":  500
   },
   {
     "Name": "Lettuce",
-    "CategoryId": 1
+    "CategoryId": 1,
+    "ProductCode": "ABC122",
+    "Price": 3000
   },
   {
     "Name": "Tomato",
-    "CategoryId": 1
+    "CategoryId": 1,
+    "ProductCode": "ABC123",
+    "Price": 300
   },
   {
     "Name": "Onion",
-    "CategoryId": 1
+    "CategoryId": 1,
+    "ProductCode": "ABC124",
+    "Price": 500
   },
   {
     "Name": "Pineapple",
-    "CategoryId": 2
+    "CategoryId": 2,
+    "ProductCode": "ABC125",
+    "Price": 5000
   },
   {
     "Name": "Apple",
-    "CategoryId": 2
+    "CategoryId": 2,
+    "ProductCode": "ABC126",
+    "Price": 2500
   },
   {
     "Name": "Grape",
-    "CategoryId": 2
+    "CategoryId": 2,
+    "ProductCode": "ABC127",
+    "Price": 20000
   },
   {
     "Name": "Pear",
-    "CategoryId": 2
+    "CategoryId": 2,
+    "ProductCode": "ABC128",
+    "Price": 1500
   },
   {
     "Name": "Pencil",
-    "CategoryId": 3
+    "CategoryId": 3,
+    "ProductCode": "ABC129",
+    "Price": 1500
   },
   {
     "Name": "Eraser",
-    "CategoryId": 3
+    "CategoryId": 3,
+    "ProductCode": "ABC130",
+    "Price": 900
   },
   {
     "Name": "Book",
-    "CategoryId": 3
+    "CategoryId": 3,
+    "ProductCode": "ABC1231",
+    "Price": 50500
   },
   {
     "Name": "Rule",
-    "CategoryId": 3
+    "CategoryId": 3,
+    "ProductCode": "ABC132",
+    "Price": 2500
   },
   {
     "Name": "PC",
-    "CategoryId": 4
+    "CategoryId": 4,
+    "ProductCode": "ABC133",
+    "Price": 4500000
   },
   {
     "Name": "Diskette",
-    "CategoryId": 4
+    "CategoryId": 4,
+    "ProductCode": "ABC134",
+    "Price": 3500
   },
   {
     "Name": "Usb",
-    "CategoryId": 4
+    "CategoryId": 4,
+    "ProductCode": "ABC135",
+    "Price": 18500
   },
   {
-    "Name": "Data",
-    "CategoryId": 4
+    "Name": "Monitor",
+    "CategoryId": 4,
+    "ProductCode": "ABC136",
+    "Price": 3500000
   }
 ]

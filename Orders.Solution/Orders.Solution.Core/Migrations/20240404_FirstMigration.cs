@@ -40,7 +40,7 @@ namespace Orders.Solution.Core.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Identification = table.Column<double>(type: "numeric(18)", nullable: false),
+                    Identification = table.Column<long>(type: "bigint", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     BirthDay = table.Column<DateTime>(type: "date", nullable: false),
@@ -69,13 +69,14 @@ namespace Orders.Solution.Core.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ProductCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Price = table.Column<double>(type: "numeric(18,2)", nullable: false),
+                    Price = table.Column<long>(type: "bigint", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PRODUCTS", x => x.ID);
                     table.UniqueConstraint("UQ_PRODUCTS_NAME", x => x.Name);
+                    table.UniqueConstraint("UQ_PRODUCTS_PRODUCTCODE", x => x.ProductCode);
                     table.ForeignKey(
                         name: "FK_PRODUCTS_CATEGORIES",
                         column: x => x.CategoryId,
@@ -132,7 +133,7 @@ namespace Orders.Solution.Core.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Qty = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<double>(type: "numeric(18,2)", nullable: false),
+                    Price = table.Column<long>(type: "bigint", nullable: false),
                     OrderHdrId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                 },

@@ -24,6 +24,14 @@ namespace Orders.Solution.API.Controllers
             return Ok(products);
         }
 
+        // GET: api/<ValuesController>
+        [HttpGet("GetProductsByCategoryId")]
+        public async Task<IActionResult> GetProductsByCategoryId(int categoryId, int page = 1, int sizePage = 10, string sorting = "")
+        {
+            var products = await _productRepository.GetProductsByCategoryId(categoryId, page, sizePage, sorting);
+            return Ok(products);
+        }
+
         //// GET api/<ValuesController>/5
         //[HttpGet("{id}")]
         //public string Get(int id)

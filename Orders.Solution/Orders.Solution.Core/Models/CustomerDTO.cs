@@ -11,7 +11,7 @@ namespace Orders.Solution.Core.Models
 
 
         [Column("IDENTIFICATION"), Required]
-        public double Identification { get; set; }
+        public long Identification { get; set; }
 
 
         [Column("NAME"), MaxLength(50), Required]

@@ -1,6 +1,45 @@
 
-<div class="select-container">
-    <select id="selectCategory" placeholder="Category">
-      <option *ngFor="let option of categoryOptions" [value]="option.id">{{ option.name }}</option>
-    </select>
+<div class="mat-app-backgroud basic-container">
+  <div class="contain-main">
+    <div class="contain-head">
+      <div class="contain-title">Catalog</div>
+      <div class="breadcrumbs">
+        <app-bread-crumb
+          [textPrincipal]="'Catalog'" >
+        </app-bread-crumb>
+      </div>
+    </div>
+    <div class="contain-body">
+      <div class="select-container">
+        <select id="selectCategory" placeholder="Category" [(ngModel)]="categoryId" (change)="selectCategoryChange($event)">
+          <option value="0" selected>All</option>
+          <option *ngFor="let option of categoryOptions" [value]="option.id">{{ option.name }}</option>
+        </select>
+      </div>
+      <div class="contain-table">
+        <table mat-table matSort [dataSource]="dataSource" (matSortChange)="onSortChange($event)">
+          <ng-container matColumnDef="Id">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let element">{{ element.Id }}</td>
+          </ng-container> 
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>name</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>  
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          <tr *matNoDataRow>
+            <td class="mat-cell-emptyResults" colspan="6">
+              <div class="no-results-content">
+                <img src="../../../../../../assets/img/emptyResults.png" alt="emptyResults" />
+                <p>empty Results</p>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
