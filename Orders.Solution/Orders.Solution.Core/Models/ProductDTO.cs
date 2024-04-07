@@ -15,6 +15,10 @@ namespace Orders.Solution.Core.Models
         public string Name { get; set; }
 
 
+        [Column("DESCRIPTION"), MaxLength(4000)]
+        public string Description { get; set; }
+
+
         [Column("PRODUCTCODE"), MaxLength(10), Required]
         public string ProductCode { get; set; }
 

@@ -116,6 +116,10 @@ namespace Orders.Solution.Core.Migrations
                     .HasMaxLength(50)
                     .HasColumnType("nvarchar(50)");
 
+                b.Property<string>("DESCRIPTION")
+                    .HasMaxLength(4000)
+                    .HasColumnType("nvarchar(4000)");
+
                 b.Property<string>("PRODUCTCODE")
                     .IsRequired()
                     .HasMaxLength(10)

@@ -14,6 +14,7 @@ export class ProductListComponent implements OnInit {
 
   displayedColumns: string[] = [
     'Name',
+    'Description',
     'Product_Code',
     'Price',
   ];
@@ -22,10 +23,11 @@ export class ProductListComponent implements OnInit {
   dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   categoryId: number = 0;
-  lenght!: number;
+  length!: number;
   pageIndex: number = 0; 
   pageSizeLength: number = 10;
   sorting: string = '';
+  pageSizeOptions = [10, 25, 50];
 
   constructor(
     public _MatPaginatorIntl: MatPaginatorIntl,
@@ -35,7 +37,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.loadDataOptions();
     this.getList(this.categoryId, this.pageIndex, this.pageSizeLength, this.sorting);
-    this.initializePagination(this.pageIndex, this.pageSizeLength, this.lenght)
+    this.initializePagination(this.pageIndex, this.pageSizeLength, this.length)
   }
 
   initializePagination(pageObj: number, pageSizeObj: number, lengthObj: number){
@@ -66,7 +68,7 @@ export class ProductListComponent implements OnInit {
     this.apiConnectionService.getProductsByCategoryId(categoryId, page + 1, pageSize, sorting).subscribe((data) => {
       if (data) {
         this.dataSource = new MatTableDataSource<ProductDTO>(data.data);
-        this.lenght = data.totalRecords;
+        this.length = data.totalRecords;
         this.pageIndex = page;
       }
     },
@@ -96,7 +98,7 @@ export class ProductListComponent implements OnInit {
   pageChanged(event: PageEvent) { 
     this.pageSizeLength = event.pageSize;
     this.getList(this.categoryId, event.pageIndex, this.pageSizeLength, this.sorting);
-    this.initializePagination(event.pageIndex, this.pageSizeLength, this.lenght);
+    this.initializePagination(event.pageIndex, this.pageSizeLength, this.length);
   }
   
   onSortChange(event: any) {
