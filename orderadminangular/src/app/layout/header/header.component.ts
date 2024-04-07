@@ -19,4 +19,13 @@ export class HeaderComponent {
       this.router.navigate(['/input/list']);
     }
   }
+
+  onHomeButtonClick() {
+    this.router.navigate(['']);
+
+    const selectElement = document.getElementById('selectOption') as HTMLSelectElement;
+    if (selectElement) {
+      selectElement.selectedIndex = 0;
+    }
+  }
 }

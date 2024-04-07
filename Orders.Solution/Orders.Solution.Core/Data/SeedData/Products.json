@@ -1,112 +1,112 @@
 ﻿[
   {
     "Name": "Carrot",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "The carrot (Daucus carota subsp. sativus) is a root vegetable, typically orange in color, though heirloom variants including purple, black, red, white, and yellow cultivars exist,[2][3][4] all of which are domesticated forms of the wild carrot, Daucus carota, native to Europe and Southwestern Asia. The plant probably originated in Persia and was originally cultivated for its leaves and seeds. The most commonly eaten part of the plant is the taproot, although the stems and leaves are also eaten. The domestic carrot has been selectively bred for its enlarged, more palatable, less woody-textured taproot.",
     "CategoryId": 1,
     "ProductCode": "ABC121",
     "Price": 500
   },
   {
     "Name": "Lettuce",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "Lettuce (Lactuca sativa) is an annual plant of the family Asteraceae. It is most often grown as a leaf vegetable, but sometimes for its stem and seeds. Lettuce is most often used for salads, although it is also seen in other kinds of food, such as soups, sandwiches and wraps; it can also be grilled.[3] One variety, celtuce (asparagus lettuce), is grown for its stems, which are eaten either raw or cooked. In addition to its main use as a leafy green, it has also gathered religious and medicinal significance over centuries of human consumption. Europe and North America originally dominated the market for lettuce, but by the late 20th century the consumption of lettuce had spread throughout the world. As of 2021, world production of lettuce and chicory was 27 million tonnes, 53 percent of which came from China",
     "CategoryId": 1,
     "ProductCode": "ABC122",
     "Price": 3000
   },
   {
     "Name": "Tomato",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "The tomato (/təmeɪtoʊ/ or /təmɑːtoʊ/) is the edible berry of the plant Solanum lycopersicum,[1][2] commonly known as the tomato plant. The species originated in western South America, Mexico, and Central America.[2][3] The Nahuatl word tomatl gave rise to the Spanish word tomate, from which the English word tomato derives.[3][4] Its domestication and use as a cultivated food may have originated with the indigenous peoples of Mexico.[2][5] The Aztecs used tomatoes in their cooking at the time of the Spanish conquest of the Aztec Empire, and after the Spanish encountered the tomato for the first time after their contact with the Aztecs, they brought the plant to Europe, in a widespread transfer of plants known as the Columbian exchange. From there, the tomato was introduced to other parts of the European-colonized world during the 16th century",
     "CategoryId": 1,
     "ProductCode": "ABC123",
     "Price": 300
   },
   {
     "Name": "Onion",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "An onion (Allium cepa L., from Latin cepa meaning onion), also known as the bulb onion or common onion, is a vegetable that is the most widely cultivated species of the genus Allium. The shallot is a botanical variety of the onion which was classified as a separate species until 2011.[2][3]: 21  Its close relatives include garlic, scallion, leek, and chive.[4",
     "CategoryId": 1,
     "ProductCode": "ABC124",
     "Price": 500
   },
   {
     "Name": "Pineapple",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "The pineapple[2][3] (Ananas comosus) is a tropical plant with an edible fruit; it is the most economically significant plant in the family Bromeliaceae.",
     "CategoryId": 2,
     "ProductCode": "ABC125",
     "Price": 5000
   },
   {
     "Name": "Apple",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "An apple is a round, edible fruit produced by an apple tree (Malus spp., among them the domestic or orchard apple; Malus domestica). Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus. The tree originated in Central Asia, where its wild ancestor, Malus sieversii, is still found. Apples have been grown for thousands of years in Asia and Europe and were introduced to North America by European colonists. Apples have religious and mythological significance in many cultures, including Norse, Greek, and European Christian tradition.",
     "CategoryId": 2,
     "ProductCode": "ABC126",
     "Price": 2500
   },
   {
     "Name": "Grape",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "A grape is a fruit, botanically a berry, of the deciduous woody vines of the flowering plant genus Vitis. Grapes are a non-climacteric type of fruit, generally occurring in clusters.",
     "CategoryId": 2,
     "ProductCode": "ABC127",
     "Price": 20000
   },
   {
     "Name": "Pear",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "Pears are fruits produced and consumed around the world, growing on a tree and harvested in late summer into mid-autumn. The pear tree and shrub are a species of genus Pyrus /ˈpaɪrəs/, in the family Rosaceae, bearing the pomaceous fruit of the same name. Several species of pears are valued for their edible fruit and juices, while others are cultivated as trees.",
     "CategoryId": 2,
     "ProductCode": "ABC128",
     "Price": 1500
   },
   {
     "Name": "Pencil",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "A pencil (/ˈpɛnsəl/ ⓘ) is a writing or drawing implement with a solid pigment core in a protective casing that reduces the risk of core breakage, and keeps it from marking the user's hand.",
     "CategoryId": 3,
     "ProductCode": "ABC129",
     "Price": 1500
   },
   {
     "Name": "Eraser",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "An eraser (also known as a rubber in some Commonwealth countries, including South Africa [1][2][3] from which the material first used got its name) is an article of stationery that is used for removing marks from paper or skin (e.g. parchment or vellum). Erasers have a rubbery consistency and come in a variety of shapes, sizes, and colors. Some pencils have an eraser on one end. Erasers come in all kinds of shapes and colors. Less expensive erasers are made from synthetic rubber and synthetic soy-based gum, but more expensive or specialized erasers are made from vinyl, plastic, or gum-like materials.",
     "CategoryId": 3,
     "ProductCode": "ABC130",
     "Price": 900
   },
   {
     "Name": "Book",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "A book is a medium for recording information in the form of writing or images. Books are typically composed of many pages, bound together and protected by a cover.[1] Modern bound books were preceded by many other written mediums, such as the codex and the scroll. The book publishing process is the series of steps involved in their creation and dissemination.",
     "CategoryId": 3,
     "ProductCode": "ABC1231",
     "Price": 50500
   },
   {
     "Name": "Rule",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "The slide rule is a calculating instrument that acts like an analog computer. It has several mobile numerical scales that facilitate the quick and comfortable performance of complex arithmetic operations, such as multiplications, divisions, etc. Its scales have been modified in order to be adapted to specific fields of use, such as civil engineering, electronics, construction, aeronautics and aerospace, finance, etc. The most common scale is around 25 cm in length (10 inches), which reaches a precision of three significant figures, with pocket versions existing with smaller precisions that reach approximately 10 cm. Its historical evolution had a high point that coincided with the advent, at the beginning of the last third of the 20th century, of the first electronic calculators and the primitive personal computers.",
     "CategoryId": 3,
     "ProductCode": "ABC132",
     "Price": 2500
   },
   {
     "Name": "PC",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "A personal computer, personal computer or computer, known as a PC (Personal Computer), is a type of microcomputer designed in principle to be used by a single person. Typically, the acronym PC refers to IBM PC compatible computers. A personal computer is generally of medium size and is used by a single user (although there are operating systems that allow several users simultaneously, which is known as multi-user). It is usually called a desktop computer, due to its static position and impossibility of transport, unlike a laptop.",
     "CategoryId": 4,
     "ProductCode": "ABC133",
     "Price": 4500000
   },
   {
     "Name": "Diskette",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "A floppy disk or floppy diskette (casually referred to as a floppy or a diskette) is a type of disk storage composed of a thin and flexible disk of a magnetic storage medium in a square or nearly square plastic enclosure lined with a fabric that removes dust particles from the spinning disk. Floppy disks store digital data which can be read and written when the disk is inserted into a floppy disk drive (FDD) connected to or inside a computer or other device.",
     "CategoryId": 4,
     "ProductCode": "ABC134",
     "Price": 3500
   },
   {
     "Name": "Usb",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "Universal Serial Bus (USB) is an industry standard that allows data exchange and delivery of power between many various types of electronics. It specifies its architecture, in particular its physical interface, and communication protocols for data transfer and power delivery to and from hosts, such as personal computers, to and from peripheral devices, e.g. displays, keyboards, and mass storage devices, and to and from intermediate hubs, which multiply the number of a host's ports.",
     "CategoryId": 4,
     "ProductCode": "ABC135",
     "Price": 18500
   },
   {
     "Name": "Monitor",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis justo. Fusce tempor vitae justo eget mollis. In hac habitasse platea dictumst. Integer sed cursus velit. Nulla sed aliquam urna. Mauris efficitur, odio a lacinia facilisis, justo turpis luctus dui, eget rhoncus purus elit non justo. Vivamus varius lorem nec lorem placerat varius. Nullam nec ultrices nunc. Aenean ultrices massa a neque suscipit, vel vestibulum risus cursus. In eget augue mauris. Duis efficitur justo id sapien rutrum tristique. Ut in enim vitae nisi mollis accumsan. Donec lacinia mauris quis felis commodo, nec ultricies sem rhoncus.,",
+    "Description": "In computing, a monitor, also called a display, computer monitor and computer monitor, is the main output device (interface), which displays data or information to all users.",
     "CategoryId": 4,
     "ProductCode": "ABC136",
     "Price": 3500000

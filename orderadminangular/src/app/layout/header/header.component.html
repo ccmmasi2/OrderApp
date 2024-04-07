@@ -7,12 +7,13 @@
       mat-button
       [routerLink]="['']"
       routerLinkActive="router-link-active"
+      (click)="onHomeButtonClick()"
       >
       <mat-icon aria-hidden="false" fontIcon="home"></mat-icon>
       <label class="label">Home</label>
     </button>
     <div class="select-container">
-      <select (change)="onOptionChange($event)">
+      <select id="selectOption" (change)="onOptionChange($event)">
         <option value="1">Select an option</option>
         <option value="2">Catalog</option>
         <option value="2">Shopping cart</option>

@@ -13,12 +13,13 @@ import { ApiConnectionService } from '@app/services/api-connection.service';
 export class ProductListComponent implements OnInit {
 
   displayedColumns: string[] = [
+    'Product_Code',
     'Name',
     'Description',
-    'Product_Code',
     'Price',
     'Stock',
-    'Actions',
+    'OrderQty',
+    'Add_to_cart',
   ];
 
   categoryOptions: CategoryDTO[] = [];
@@ -112,7 +113,7 @@ export class ProductListComponent implements OnInit {
 
   columnMapping: { [key: string]: string } = {
     'Id': 'id',
-    'name': 'name',
+    'Name': 'name',
   };
 
   incrementQty(product: ProductDTO) {

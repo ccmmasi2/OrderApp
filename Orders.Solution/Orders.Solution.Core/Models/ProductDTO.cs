@@ -31,7 +31,11 @@ namespace Orders.Solution.Core.Models
         public int CategoryId { get; set; }
 
         public virtual CategoryDTO Category { get; set; }
+
+        [NotMapped]
         public virtual int StockQty { get; set; }
+
+        [NotMapped]
         public virtual int OrderQty { get; set; }
     }
 }

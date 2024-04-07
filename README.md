@@ -8,3 +8,5 @@
 	fortawesome
 	
 	set the correct port number on the envitoment/envitoment.ts file
+	
+	The name of the products was obtained from Wikipedia

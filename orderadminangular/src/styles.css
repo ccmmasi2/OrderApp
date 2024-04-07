@@ -4,22 +4,6 @@
   text-align: right;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -44,13 +28,6 @@ header {
 
 .navbar-brand {
   padding-top: 10px;
-}
-
-.label {
-  color: rgba(108, 110, 113, 1);
-  align-items: center;
-  cursor: pointer;
-  justify-content: baseline;
 }
 
 .mat-icon {
@@ -112,17 +89,7 @@ header {
 /*bread-crumb*/
 
 /*home*/
-
-.matrix-info {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f8f8f8;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
+ 
 h2 {
   font-size: 24px;
   color: #333;
@@ -146,16 +113,7 @@ a:hover {
 /*home*/
 
 /*footer*/
-
-.contain-footer {
-  display: flex;
-  padding-top: 24px;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 24px;
-  flex-shrink: 0;
-}  
-
+ 
 .button {
   display: flex;
   height: 48px;
@@ -198,43 +156,6 @@ a:hover {
 /*head*/
 
 
-/*table*/
-.custom-table {
-  width: 100%;
-  border: 1px solid #ccc;  
-  border-collapse: collapse;  
-}
-
-.custom-table th, .custom-table td {
-  padding: 8px;
-  text-align: left;
-}
-
-.custom-table th {
-  background-color: #f2f2f2; 
-  border-bottom: 1px solid #ccc; 
-}
-
-.custom-table tr:nth-child(even) {
-  background-color: #f9f9f9;  
-}
-
-/*table*/
-
-/*bodyContent*/
-
-.bodyContent {
-  margin-top: 20px; 
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: flex-end; 
-}
-
-/*bodyContent*/
-
-
 /*modal-actions*/
 
 .triangle::before {
@@ -256,23 +177,4 @@ a:hover {
 .divContainerButton {
   margin: 10px;  
 }
-
-.buttonActions {
-  cursor: pointer;
-}
-
-/*modal-actions*/
-
-.cellValue {
-  width: 20px;
-  text-align: center;
-  padding-left: 20px;
-}
-
-.cellValueResult {
-  width: 30px;
-  text-align: center;
-  padding-left: 20px;
-}
-
  

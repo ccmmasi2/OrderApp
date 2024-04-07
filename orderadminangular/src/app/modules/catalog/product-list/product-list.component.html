@@ -2,12 +2,7 @@
 <div class="mat-app-backgroud basic-container">
   <div class="contain-main">
     <div class="contain-head">
-      <div class="contain-title">Catalog</div>
-      <div class="breadcrumbs">
-        <app-bread-crumb
-          [textPrincipal]="'Catalog'" >
-        </app-bread-crumb>
-      </div>
+      <div class="contain-title">Catalog</div> 
     </div>
     <div class="contain-body">
       <div class="select-container">
@@ -44,8 +39,8 @@
             <td mat-cell class="price-cell" *matCellDef="let element">{{ element.stockQty }}</td>
           </ng-container>
           
-          <ng-container matColumnDef="Actions">
-            <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <ng-container matColumnDef="OrderQty">
+            <th mat-header-cell *matHeaderCellDef>Order Qty</th>
             <td mat-cell *matCellDef="let element">
               <button mat-icon-button (click)="incrementQty(element)">
                 <mat-icon>add</mat-icon>
@@ -55,6 +50,11 @@
                 <mat-icon>remove</mat-icon>
               </button>
             </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Add_to_cart">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Add to cart</th>
+            <td mat-cell class="price-cell" *matCellDef="let element">{{ element.stockQty }}</td>
           </ng-container>
           
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
