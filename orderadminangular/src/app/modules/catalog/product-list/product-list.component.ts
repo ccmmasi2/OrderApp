@@ -13,8 +13,9 @@ import { ApiConnectionService } from '@app/services/api-connection.service';
 export class ProductListComponent implements OnInit {
 
   displayedColumns: string[] = [
-    'Id',
-    'name',
+    'Name',
+    'Product_Code',
+    'Price',
   ];
 
   categoryOptions: CategoryDTO[] = [];
