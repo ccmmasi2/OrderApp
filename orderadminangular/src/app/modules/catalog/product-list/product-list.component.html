@@ -1,1 +1,6 @@
-<p>product-list works!</p>
+
+<div class="select-container">
+    <select id="selectCategory" placeholder="Category">
+      <option *ngFor="let option of categoryOptions" [value]="option.id">{{ option.name }}</option>
+    </select>
+</div>
