@@ -7,7 +7,6 @@ import { HeaderComponent } from './layout/header/header.component';
 import { CatalogModule } from './modules/catalog/catalog.module';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { EventService } from './services/EventService';
 import { HomeComponent } from './modules/home/home/home.component';
 import { MainpageComponent } from './layout/mainpage/mainpage.component';
 import { SharedModule } from './modules/shared/shared.module';
@@ -29,7 +28,6 @@ import { SharedModule } from './modules/shared/shared.module';
     HttpClientModule,
     SharedModule
   ],
-  providers: [EventService],
   bootstrap: [AppComponent]
 })
 

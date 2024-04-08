@@ -52,4 +52,8 @@ export class ApiConnectionService {
       })
     );
   }
+
+  createOrder(cartItems: ProductDTO[]): Observable<any> {
+    return this.http.post<any>(this.baseUrl, cartItems);
+  }
 }

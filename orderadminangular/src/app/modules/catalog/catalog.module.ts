@@ -6,12 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@app/material/material.module';
 import { NumericInputDirective } from '@app/rules/numeric-input.directive';
 import { ShopingCartComponent } from './shoping-cart/shoping-cart.component';
+import { OrderListComponent } from './order-list/order-list.component';
 
 @NgModule({
   declarations: [
     ProductListComponent,
     NumericInputDirective,
-    ShopingCartComponent
+    ShopingCartComponent,
+    OrderListComponent
   ],
   imports: [
     CommonModule,

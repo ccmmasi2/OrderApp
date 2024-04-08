@@ -36,7 +36,7 @@
             <ng-container matColumnDef="OrderQty">
               <th mat-header-cell *matHeaderCellDef>Order Qty</th>
               <td mat-cell *matCellDef="let element">
-                <button mat-icon-button 
+                <button mat-icon-button class="button" 
                         (click)="decrementQty(element)" 
                         [disabled]="isOrderQtyZero(element)" 
                         [ngClass]="{'error-border': isOrderQtyZero(element)}">
@@ -49,11 +49,25 @@
                         min="0" 
                         [max]="element.stockQty" 
                         [ngClass]="{'error-border': isOrderQtyExceed(element) || isOrderQtyZero(element)}">
-                <button mat-icon-button
+                <button mat-icon-button class="button"
                         (click)="incrementQty(element)" 
                         [disabled]="isOrderQtyExceed(element)" 
                         [ngClass]="{'error-border': isOrderQtyExceed(element)}">
                   <mat-icon>add</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Totals">
+              <th mat-header-cell *matHeaderCellDef>Totals</th>
+              <td mat-cell *matCellDef="let element">{{ calculateTotal(element) | currency:'COP: ':'symbol':'1.0-0' }}</td>
+            </ng-container>
+            
+            <ng-container matColumnDef="Delete">
+              <th mat-header-cell *matHeaderCellDef>Delete</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="warn" (click)="removeItem(element)">
+                  <mat-icon>delete</mat-icon>
                 </button>
               </td>
             </ng-container>
@@ -68,7 +82,16 @@
                 </div>
               </td>
             </tr>
+  
           </table>
+        </div>
+        <div class="separator"></div>
+        <div class="Totals">
+          <div>Total Qty: {{ getTotalQty() }}</div>
+          <div>Total: {{ getTotalSum() | currency:'COP: ':'symbol':'1.0-0'  }}</div>
+          <button (click)="createOrder()" class="button">
+            Create Order
+          </button> 
         </div>
       </div>
     </div>

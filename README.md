@@ -10,3 +10,5 @@
 	set the correct port number on the envitoment/envitoment.ts file
 	
 	The name of the products was obtained from Wikipedia
+	
+	Start the backend and the database will be created using codefirst and scaffolding

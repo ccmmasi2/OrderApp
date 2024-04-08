@@ -18,6 +18,8 @@ export class ShopingCartComponent implements OnInit {
     'Price',
     'Stock',
     'OrderQty',
+    'Totals',
+    'Delete'
   ];
 
   cartItems: ProductDTO[] = []; // Definición de cartItems
@@ -63,5 +65,48 @@ export class ShopingCartComponent implements OnInit {
   
   isOrderQtyZero(element: any): boolean {
     return element.orderQty === 0;
+  }
+
+  calculateTotal(element: ProductDTO): number {
+    return element.price * element.orderQty;
+  } 
+  
+  getTotalQty(): number {
+    let totalQty = 0;
+    for (const item of this.cartItems) {
+      totalQty += item.orderQty;
+    }
+    return totalQty;
+  } 
+  
+  getTotalSum(): number {
+    let totalSum = 0;
+    for (const item of this.cartItems) {
+      totalSum += item.price * item.orderQty;
+    }
+    return totalSum;
+  } 
+
+  removeItem(product: ProductDTO): void {
+    const index = this.cartItems.findIndex(item => item.id === product.id);
+    if (index !== -1) {
+      const confirmation = confirm(`Are you sure you want to remove "${product.name}" from the cart?`);
+      if (confirmation) {
+        this.cartItems.splice(index, 1);
+        localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+        this.dataSource = new MatTableDataSource<ProductDTO>(this.cartItems);
+      }
+    }
+  }
+  
+  createOrder() {
+    this.apiConnectionService.createOrder(this.cartItems).subscribe(
+      response => {
+        console.log('Order created successfully:', response);
+      },
+      error => {
+        console.error('Error creating order:', error);
+      }
+    );
   }
 }
