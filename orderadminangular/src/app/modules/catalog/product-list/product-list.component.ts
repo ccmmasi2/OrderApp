@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit {
     'Add_to_cart',
   ];
 
-  cartItems: { product: ProductDTO, quantity: number }[] = []; // Definición de cartItems
+  cartItems: ProductDTO[] = []; // Definición de cartItems
   categoryOptions: CategoryDTO[] = [];
   dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -148,8 +148,7 @@ export class ProductListComponent implements OnInit {
   addToCart(product: ProductDTO): void {
     if (product.orderQty > 0 && product.orderQty <= product.stockQty) {
       const productToAdd = { ...product };  
-      this.cartItems.push({ product: productToAdd, quantity: product.orderQty });
-      console.log('added');
+      this.cartItems.push(productToAdd);
 
       localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
 

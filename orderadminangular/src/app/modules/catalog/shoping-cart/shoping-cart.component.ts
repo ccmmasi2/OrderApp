@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AppComponent } from '@app/app.component';
-import { CartItem } from '@app/models/cartItem.model';
 import { ProductDTO } from '@app/models/product.model';
 import { ApiConnectionService } from '@app/services/api-connection.service';
 
@@ -21,7 +20,7 @@ export class ShopingCartComponent implements OnInit {
     'OrderQty',
   ];
 
-  cartItems: CartItem[] = []; // Definición de cartItems
+  cartItems: ProductDTO[] = []; // Definición de cartItems
   dataSource: any;
 
   constructor(
@@ -34,10 +33,12 @@ export class ShopingCartComponent implements OnInit {
   }
 
   getList(): void {
+    console.log("getList");
     const storedCartItems = localStorage.getItem('cartItems');
     if (storedCartItems) {
       this.cartItems = JSON.parse(storedCartItems);
-      this.dataSource = new MatTableDataSource<CartItem>(this.cartItems);
+      console.log(this.cartItems);
+      this.dataSource = new MatTableDataSource<ProductDTO>(this.cartItems);
     } 
   }    
 
