@@ -25,7 +25,7 @@ export class ShopingCartComponent implements OnInit {
     'Delete'
   ];
 
-  cartItems: ProductDTO[] = []; // Definición de cartItems
+  cartItems: ProductDTO[] = []; 
   dataSource: any;
 
   constructor(
@@ -104,9 +104,22 @@ export class ShopingCartComponent implements OnInit {
   }
   
   createOrder() {
+    const updatedCartItems: ProductDTO[] = [];
+    for (const item of this.dataSource.filteredData) {
+      updatedCartItems.push({ ...item });
+    }
+
+    this.cartItems = updatedCartItems;
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+
     const dialogRef = this.dialog.open(GenerateOrderComponent, {
       width: '600px',  
-      height: '500px'  
+      height: '500px', 
+      data: {
+        totalQty: this.getTotalQty(),
+        totalSum: this.getTotalSum(),
+        cartItems: updatedCartItems
+      }
     });
   
     dialogRef.afterClosed().subscribe(result => {
