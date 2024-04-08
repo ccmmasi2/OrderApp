@@ -129,4 +129,12 @@ export class ProductListComponent implements OnInit {
       product.orderQty--;
     }
   }
+
+  isOrderQtyExceed(element: any): boolean {
+    return element.orderQty > element.stockQty;
+  }
+  
+  isOrderQtyZero(element: any): boolean {
+    return element.orderQty === 0;
+  }
 }

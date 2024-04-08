@@ -42,19 +42,23 @@
           <ng-container matColumnDef="OrderQty">
             <th mat-header-cell *matHeaderCellDef>Order Qty</th>
             <td mat-cell *matCellDef="let element">
-              <button mat-icon-button (click)="incrementQty(element)">
-                <mat-icon>add</mat-icon>
-              </button>
-              <span>{{ element.orderQty }}</span>
-              <button mat-icon-button (click)="decrementQty(element)">
+              <button mat-icon-button (click)="decrementQty(element)" [disabled]="isOrderQtyZero(element)" [ngClass]="{'error-border': isOrderQtyZero(element)}">
                 <mat-icon>remove</mat-icon>
+              </button>
+              <input class="numberfield" type="text" appNumericInput [(ngModel)]="element.orderQty" min="0" [max]="element.stockQty" [ngClass]="{'error-border': isOrderQtyExceed(element) || isOrderQtyZero(element)}">
+              <button mat-icon-button (click)="incrementQty(element)" [disabled]="isOrderQtyExceed(element)" [ngClass]="{'error-border': isOrderQtyExceed(element)}">
+                <mat-icon>add</mat-icon>
               </button>
             </td>
           </ng-container>
 
           <ng-container matColumnDef="Add_to_cart">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Add to cart</th>
-            <td mat-cell class="price-cell" *matCellDef="let element">{{ element.stockQty }}</td>
+            <td mat-cell class="price-cell" *matCellDef="let element">
+              <button mat-icon-button [disabled]="element.orderQty == 0 || element.orderQty >= element.stockQty" [ngClass]="{'error-border': isOrderQtyExceed(element) || isOrderQtyZero(element)}">
+                <mat-icon class="fa fa-shopping-cart"></mat-icon>
+              </button>
+            </td>
           </ng-container>
           
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
