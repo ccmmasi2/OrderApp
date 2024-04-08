@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertService } from './services/alert-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'order web angular';
+
+  constructor(private alertService: AlertService) {
+    this.alertService.alert$.subscribe(({ message, type }) => {
+      this.showAlert(message, type);
+    });
+  }
 
   alertMessage: string = '';
   alertType: string = '';

@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { AppComponent } from '@app/app.component';
 import { CategoryDTO } from '@app/models/category.model';
 import { ProductDTO } from '@app/models/product.model';
+import { AlertService } from '@app/services/alert-service.service';
 import { ApiConnectionService } from '@app/services/api-connection.service';
 
 @Component({
@@ -37,7 +37,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     public _MatPaginatorIntl: MatPaginatorIntl,
     public apiConnectionService: ApiConnectionService,
-    private appComponent: AppComponent
+    private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -80,7 +80,7 @@ export class ProductListComponent implements OnInit {
     },
     (error) => {
       const message = `Error getting data from the API "${error}"`
-      this.appComponent.showAlert(message, 'error');
+      this.alertService.showAlert(message, 'error'); 
     });
   }
 
@@ -91,12 +91,12 @@ export class ProductListComponent implements OnInit {
       }
       else {
         const message = `Error loading categories`
-        this.appComponent.showAlert(message, 'error');
+        this.alertService.showAlert(message, 'error'); 
       }
     },
     (error) => {
       const message = `Error loading categories: "${error}"`
-      this.appComponent.showAlert(message, 'error'); 
+      this.alertService.showAlert(message, 'error'); 
     })
   }
 
@@ -127,7 +127,7 @@ export class ProductListComponent implements OnInit {
       product.orderQty++;
     } else {
       const message = `no stock`
-      this.appComponent.showAlert(message, 'warning'); 
+      this.alertService.showAlert(message, 'warning'); 
     }
   }
   
@@ -147,16 +147,22 @@ export class ProductListComponent implements OnInit {
 
   addToCart(product: ProductDTO): void {
     if (product.orderQty > 0 && product.orderQty <= product.stockQty) {
-      const productToAdd = { ...product };  
-      this.cartItems.push(productToAdd);
-
+      const existingProductIndex = this.cartItems.findIndex(item => item.id === product.id);
+    
+      if (existingProductIndex !== -1) {
+        this.cartItems[existingProductIndex].orderQty = product.orderQty;
+      } else {
+        const productToAdd = { ...product };  
+        this.cartItems.push(productToAdd);
+      }
+    
       localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-
-      const message = `Product "${product.name}" - "${product.productCode}" with amoutn "${product.orderQty}" addedd to Cart`
-      this.appComponent.showAlert(message, 'success'); 
+    
+      const message = `Product "${product.name}" - "${product.productCode}" with amount "${product.orderQty}" added to Cart`;
+      this.alertService.showAlert(message, 'success'); 
     } else {
       const message = `Invalid amount`
-      this.appComponent.showAlert(message, 'error'); 
+      this.alertService.showAlert(message, 'error'); 
     }
   }
 }

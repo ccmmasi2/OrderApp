@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AppComponent } from '@app/app.component';
 import { ProductDTO } from '@app/models/product.model';
 import { GenerateOrderComponent } from '@app/modules/shared/generate-order/generate-order.component';
+import { AlertService } from '@app/services/alert-service.service';
 import { ApiConnectionService } from '@app/services/api-connection.service';
 
 @Component({
@@ -29,8 +30,8 @@ export class ShopingCartComponent implements OnInit {
 
   constructor(
     public apiConnectionService: ApiConnectionService,
-    private appComponent: AppComponent,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +51,7 @@ export class ShopingCartComponent implements OnInit {
       product.orderQty++;
     } else {
       const message = `no stock`
-      this.appComponent.showAlert(message, 'warning'); 
+      this.alertService.showAlert(message, 'warning'); 
     }
   }
   
@@ -96,6 +97,8 @@ export class ShopingCartComponent implements OnInit {
         this.cartItems.splice(index, 1);
         localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
         this.dataSource = new MatTableDataSource<ProductDTO>(this.cartItems);
+        const message = `Item removed`
+        this.alertService.showAlert(message, 'success'); 
       }
     }
   }
