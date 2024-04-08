@@ -1,14 +1,14 @@
 # OrderApp
  
-	Angular CLI: 16.2.9
-	Node: 16.20.2  
+This project was developed with:
+- Angular CLI: 16.2.9
+- Node: 16.20.2 
+- Angular material
+- Bootstrap
+- fortawesome
+ 
+To run correctly this project please follow the next instructions:
+set the correct port number on the enviroment/enviroment.ts file
+In backend, setup the correct name for Server in the connectionstring on appsettings.Development.json
+Once you run the backend project the database will be created using codefirst and scaffolding
 	
-	Angular material
-	Bootstrap
-	fortawesome
-	
-	set the correct port number on the envitoment/envitoment.ts file
-	
-	The name of the products was obtained from Wikipedia
-	
-	Start the backend and the database will be created using codefirst and scaffolding
