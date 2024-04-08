@@ -2,15 +2,19 @@
 <div class="mat-app-backgroud basic-container">
   <div class="contain-main">
     <div class="contain-head">
-      <div class="contain-title">Catalog</div> 
+      <div class="contain-title">Catalog of products</div> 
     </div>
     <div class="contain-body">
-      <div class="select-container">
-        <select id="selectCategory" placeholder="Category" [(ngModel)]="categoryId" (change)="selectCategoryChange($event)">
-          <option value="0" selected>All</option>
-          <option *ngFor="let option of categoryOptions" [value]="option.id">{{ option.name }}</option>
-        </select>
+      <div>Category:</div> 
+      <div class="select-container-intern">
+        <div class="select-container">
+          <select id="selectCategory" placeholder="Category" [(ngModel)]="categoryId" (change)="selectCategoryChange($event)">
+            <option value="0" selected>All</option>
+            <option *ngFor="let option of categoryOptions" [value]="option.id">{{ option.name }}</option>
+          </select>
+        </div>
       </div>
+      <div class="separator"></div>
       <div class="contain-table">
         <table mat-table matSort [dataSource]="dataSource" (matSortChange)="onSortChange($event)">
 
