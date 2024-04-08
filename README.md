@@ -16,7 +16,9 @@ BackEnd:
 - Repository Pattern
  
 To run correctly this project please follow the next instructions:
-set the correct port number on the enviroment/enviroment.ts file
-In backend, setup the correct name for Server in the connectionstring on appsettings.Development.json
-Once you run the backend project the database will be created using codefirst and scaffolding
+
+1 - Select the correct brach, It's Develop branc
+2- set the correct port number on the enviroment/enviroment.ts file
+3 - In backend, setup the correct name for Server in the connectionstring on appsettings.Development.json
+4 - Once you run the backend project the database will be created using codefirst and scaffolding
 	
