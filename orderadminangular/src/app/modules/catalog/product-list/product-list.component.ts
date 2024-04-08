@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { AppComponent } from '@app/app.component';
 import { CategoryDTO } from '@app/models/category.model';
 import { ProductDTO } from '@app/models/product.model';
 import { ApiConnectionService } from '@app/services/api-connection.service';
@@ -22,6 +23,7 @@ export class ProductListComponent implements OnInit {
     'Add_to_cart',
   ];
 
+  cartItems: { product: ProductDTO, quantity: number }[] = []; // Definición de cartItems
   categoryOptions: CategoryDTO[] = [];
   dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -34,7 +36,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     public _MatPaginatorIntl: MatPaginatorIntl,
-    public apiConnectionService: ApiConnectionService
+    public apiConnectionService: ApiConnectionService,
+    private appComponent: AppComponent
   ) { }
 
   ngOnInit(): void {
@@ -44,9 +47,9 @@ export class ProductListComponent implements OnInit {
   }
 
   initializePagination(pageObj: number, pageSizeObj: number, lengthObj: number){
-    this._MatPaginatorIntl.itemsPerPageLabel = 'Mostrar';
-    this._MatPaginatorIntl.nextPageLabel = 'Siguiente página';
-    this._MatPaginatorIntl.previousPageLabel = 'Anterior página';
+    this._MatPaginatorIntl.itemsPerPageLabel = 'Show';
+    this._MatPaginatorIntl.nextPageLabel = 'Next page';
+    this._MatPaginatorIntl.previousPageLabel = 'Last page';
 
     this._MatPaginatorIntl.getRangeLabel = (
       page: number = pageObj,
@@ -76,7 +79,8 @@ export class ProductListComponent implements OnInit {
       }
     },
     (error) => {
-      console.error('Error al obtener datos desde la API:', error);
+      const message = `Error getting data from the API "${error}"`
+      this.appComponent.showAlert(message, 'error');
     });
   }
 
@@ -86,11 +90,13 @@ export class ProductListComponent implements OnInit {
         this.categoryOptions = info;
       }
       else {
-        console.error('Error loading categories');
+        const message = `Error loading categories`
+        this.appComponent.showAlert(message, 'error');
       }
     },
     (error) => {
-      console.error('Error loading categories:', error);
+      const message = `Error loading categories: "${error}"`
+      this.appComponent.showAlert(message, 'error'); 
     })
   }
 
@@ -120,7 +126,8 @@ export class ProductListComponent implements OnInit {
     if (product.orderQty < product.stockQty) {
       product.orderQty++;
     } else {
-      console.error('no stock');
+      const message = `no stock`
+      this.appComponent.showAlert(message, 'warning'); 
     }
   }
   
@@ -136,5 +143,18 @@ export class ProductListComponent implements OnInit {
   
   isOrderQtyZero(element: any): boolean {
     return element.orderQty === 0;
+  }
+
+  addToCart(product: ProductDTO): void {
+    if (product.orderQty > 0 && product.orderQty <= product.stockQty) {
+      const productToAdd = { ...product };  
+      this.cartItems.push({ product: productToAdd, quantity: product.orderQty });
+      console.log('added');
+      const message = `Product "${product.name}" - "${product.productCode}" with amoutn "${product.orderQty}" addedd to Cart`
+      this.appComponent.showAlert(message, 'success'); 
+    } else {
+      const message = `Invalid amount`
+      this.appComponent.showAlert(message, 'error'); 
+    }
   }
 }

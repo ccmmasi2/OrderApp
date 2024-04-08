@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EventService } from './services/EventService';
 import { HomeComponent } from './modules/home/home/home.component';
 import { MainpageComponent } from './layout/mainpage/mainpage.component';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MainpageComponent } from './layout/mainpage/mainpage.component';
     CatalogModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [EventService],
   bootstrap: [AppComponent]
