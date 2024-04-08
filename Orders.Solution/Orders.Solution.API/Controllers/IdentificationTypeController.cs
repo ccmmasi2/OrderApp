@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Orders.Solution.Core.ObjectRepository.Implementation;
 using Orders.Solution.Core.ObjectRepository.Interface;
 
 namespace Orders.Solution.API.Controllers
