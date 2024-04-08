@@ -1,6 +1,7 @@
 import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { CustomerDTO } from '@app/models/customer.model';
 import { IdentificationTypeDTO } from '@app/models/identificationType.model';
 import { OrderRequest } from '@app/models/orderRequest.model';
@@ -34,7 +35,9 @@ export class GenerateOrderComponent implements OnInit {
   constructor(
     public apiConnectionService: ApiConnectionService,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private router: Router,
+    private dialog: MatDialog,
   ) {
     this.totalQty = data.totalQty;
     this.totalSum = data.totalSum;
@@ -84,9 +87,6 @@ export class GenerateOrderComponent implements OnInit {
         return;
       }
       else {
-        console.log("this.cartItems");
-        console.log(this.cartItems);
-
         const orderRequest: OrderRequest = {
           customer: {
             name: this.name,
@@ -103,8 +103,14 @@ export class GenerateOrderComponent implements OnInit {
   
         this.apiConnectionService.createOrder(orderRequest).subscribe(
           (response) => {
+            localStorage.removeItem('cartItems');
+
             const message = `Order created successfully: "${response}"`
             this.alertService.showAlert(message, 'success'); 
+
+            this.dialog.closeAll();
+
+            this.router.navigate(['/Order/catalog']);
           },
           (error) => {
             const message = `An error occurred while creating the order: "${error}"`

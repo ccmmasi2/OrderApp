@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { AppComponent } from '@app/app.component';
 import { ProductDTO } from '@app/models/product.model';
 import { GenerateOrderComponent } from '@app/modules/shared/generate-order/generate-order.component';
 import { AlertService } from '@app/services/alert-service.service';
 import { ApiConnectionService } from '@app/services/api-connection.service';
 
 @Component({
-  selector: 'app-shoping-cart',
-  templateUrl: './shoping-cart.component.html' 
+  selector: 'app-shopping-cart',
+  templateUrl: './shopping-cart.component.html' 
 })
 
-export class ShopingCartComponent implements OnInit {
+export class ShoppingCartComponent implements OnInit {
 
   displayedColumns: string[] = [
     'Product_Code',
@@ -123,13 +122,6 @@ export class ShopingCartComponent implements OnInit {
     });
   
     dialogRef.afterClosed().subscribe(result => {
-    });
-    // this.apiConnectionService.createOrder(this.cartItems).subscribe(
-    //   response => {
-    //   },
-    //   error => {
-    //     console.error('Error creating order:', error);
-    //   }
-    // );
+    }); 
   }
 }
