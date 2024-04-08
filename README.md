@@ -1,11 +1,19 @@
 # OrderApp
  
 This project was developed with:
+FrontEnd:
 - Angular CLI: 16.2.9
 - Node: 16.20.2 
 - Angular material
 - Bootstrap
 - fortawesome
+
+BackEnd:
+- Net Core 8
+- EntityFramework
+- CodeFirst
+- SqlServer
+- Repository Pattern
  
 To run correctly this project please follow the next instructions:
 set the correct port number on the enviroment/enviroment.ts file
