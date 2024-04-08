@@ -19,6 +19,8 @@ export class HeaderComponent {
       this.router.navigate(['/Order/catalog']);
     } else if (selectedValue === '3') {
       this.router.navigate(['/Order/shopping-cart']);
+    } else if (selectedValue === '4') {
+      this.router.navigate(['/Order/order-list']);
     }
   }
 
