@@ -14,15 +14,7 @@ namespace Orders.Solution.API.Controllers
         {
             _productRepository = productRepository;
             _logger = logger;   
-        }
-
-        // GET: api/<ValuesController>
-        [HttpGet("GetProducts")]
-        public async Task<IActionResult> GetProducts()
-        {
-            var products = await _productRepository.GetAll();
-            return Ok(products);
-        }
+        } 
 
         // GET: api/<ValuesController>
         [HttpGet("GetProductsByCategoryId")]
