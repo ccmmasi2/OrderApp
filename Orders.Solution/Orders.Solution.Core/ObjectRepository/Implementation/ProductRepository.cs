@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Orders.Solution.Core.BaseRepository;
 using Orders.Solution.Core.Data;
 using Orders.Solution.Core.Models;
 using Orders.Solution.Core.ObjectRepository.Interface;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace Orders.Solution.Core.ObjectRepository.Implementation
 {

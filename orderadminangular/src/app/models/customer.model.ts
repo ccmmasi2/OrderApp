@@ -5,5 +5,5 @@ export class CustomerDTO {
     email: string = '';
     phoneNumber: string = '';
     identificationTypeId: number = 0;
-    identification: string = '';
+    identification: number = 0;
 }

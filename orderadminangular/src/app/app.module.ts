@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './modules/home/home/home.component';
 import { MainpageComponent } from './layout/mainpage/mainpage.component';
 import { SharedModule } from './modules/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SharedModule } from './modules/shared/shared.module';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent]
 })

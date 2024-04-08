@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CategoryDTO } from '@app/models/category.model';
 import { IdentificationTypeDTO } from '@app/models/identificationType.model';
+import { OrderRequest } from '@app/models/orderRequest.model';
 import { ProductDTO } from '@app/models/product.model';
 import { environment } from 'enviroment/enviroment';
 import { Observable, catchError, map, of } from 'rxjs';
@@ -64,7 +65,12 @@ export class ApiConnectionService {
     );
   }
 
-  createOrder(cartItems: ProductDTO[]): Observable<any> {
-    return this.http.post<any>(this.baseUrl, cartItems);
+  createOrder(orderRequest: OrderRequest): Observable<any> {
+    let url = `${this.baseUrl}/api/OrderHdr/AddOrderRequest`;
+    return this.http
+      .post<any>(url, orderRequest)
+      .pipe(
+        map((Response) => Response.data)
+      )
   }
 }

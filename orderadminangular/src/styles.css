@@ -274,3 +274,7 @@ a:hover {
 } 
 
 /*order form*/
+
+.inputText.required:invalid {
+  border-color: red;
+}
