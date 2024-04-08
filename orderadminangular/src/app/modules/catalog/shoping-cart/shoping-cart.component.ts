@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { AppComponent } from '@app/app.component';
 import { ProductDTO } from '@app/models/product.model';
+import { GenerateOrderComponent } from '@app/modules/shared/generate-order/generate-order.component';
 import { ApiConnectionService } from '@app/services/api-connection.service';
 
 @Component({
@@ -27,7 +29,8 @@ export class ShopingCartComponent implements OnInit {
 
   constructor(
     public apiConnectionService: ApiConnectionService,
-    private appComponent: AppComponent
+    private appComponent: AppComponent,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -35,11 +38,9 @@ export class ShopingCartComponent implements OnInit {
   }
 
   getList(): void {
-    console.log("getList");
     const storedCartItems = localStorage.getItem('cartItems');
     if (storedCartItems) {
       this.cartItems = JSON.parse(storedCartItems);
-      console.log(this.cartItems);
       this.dataSource = new MatTableDataSource<ProductDTO>(this.cartItems);
     } 
   }    
@@ -100,13 +101,19 @@ export class ShopingCartComponent implements OnInit {
   }
   
   createOrder() {
-    this.apiConnectionService.createOrder(this.cartItems).subscribe(
-      response => {
-        console.log('Order created successfully:', response);
-      },
-      error => {
-        console.error('Error creating order:', error);
-      }
-    );
+    const dialogRef = this.dialog.open(GenerateOrderComponent, {
+      width: '600px',  
+      height: '500px'  
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+    });
+    // this.apiConnectionService.createOrder(this.cartItems).subscribe(
+    //   response => {
+    //   },
+    //   error => {
+    //     console.error('Error creating order:', error);
+    //   }
+    // );
   }
 }

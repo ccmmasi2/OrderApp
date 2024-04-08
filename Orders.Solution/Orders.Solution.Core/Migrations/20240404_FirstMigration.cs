@@ -51,8 +51,6 @@ namespace Orders.Solution.Core.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CUSTOMERS", x => x.ID);
-                    table.UniqueConstraint("UQ_CUSTOMERS_IDENTIFICATION", x => x.Identification);
-                    table.UniqueConstraint("UQ_CUSTOMERS_EMAIL", x => x.Email);
                     table.ForeignKey(
                         name: "FK_CUSTOMERS_IDENTIFICATIONTYPES",
                         column: x => x.IdentificationTypeId,
@@ -115,6 +113,7 @@ namespace Orders.Solution.Core.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderDate = table.Column<DateTime>(type: "date", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
+                    ShippingAddress = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                 },
                 constraints: table =>
                 {
@@ -153,12 +152,7 @@ namespace Orders.Solution.Core.Migrations
                         principalTable: "PRODUCTS",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CUSTOMERS_IDENTIFICATION",
-                table: "CUSTOMERS",
-                column: "IDENTIFICATION");
+                }); 
 
             migrationBuilder.CreateIndex(
                 name: "IX_PRODUCTS_NAME",

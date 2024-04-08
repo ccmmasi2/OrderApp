@@ -17,6 +17,10 @@ namespace Orders.Solution.Core.Models
         [ForeignKey("CUSTOMERS")]
         public int CustomerId { get; set; }
 
+
+        [Column("SHIPPINGADDRESS"), MaxLength(500), Required]
+        public string ShippingAddress { get; set; }
+
         public virtual CustomerDTO Customer { get; set; }
     }
 }

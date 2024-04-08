@@ -201,6 +201,10 @@ namespace Orders.Solution.Core.Migrations
                     .IsRequired()
                     .HasColumnType("int");
 
+                b.Property<string>("SHIPPINGADDRESS")
+                    .HasMaxLength(500)
+                    .HasColumnType("nvarchar(500)");
+
                 b.HasKey("ID");
 
                 b.ToTable("ORDERHDRS");

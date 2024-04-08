@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CategoryDTO } from '@app/models/category.model';
+import { IdentificationTypeDTO } from '@app/models/identificationType.model';
 import { ProductDTO } from '@app/models/product.model';
 import { environment } from 'enviroment/enviroment';
 import { Observable, catchError, map, of } from 'rxjs';
@@ -19,6 +20,16 @@ export class ApiConnectionService {
     return this.http.get<CategoryDTO[]>(url).pipe(
         catchError((error: any) => {
           console.error('Error getting all Categories:', error);
+          return [];
+        })
+    );
+  } 
+
+  getIdentificationTypes(): Observable<IdentificationTypeDTO[]> {
+    const url = `${this.baseUrl}/api/IdentificationType/GetIdentificationTypes`;
+    return this.http.get<IdentificationTypeDTO[]>(url).pipe(
+        catchError((error: any) => {
+          console.error('Error getting all Identification Types:', error);
           return [];
         })
     );

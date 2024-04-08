@@ -1,0 +1,88 @@
+
+<div class="mat-app-backgroud basic-container">
+    <div class="contain-main">
+      <div class="contain-head">
+        <div class="contain-title">Generate order</div> 
+      </div>
+      <div class="contain-body">
+        <div class="contain-table">
+            <div class="form-container">
+                <h2>Customer information</h2>
+                <form> 
+                  
+                  <div class="form-group">
+                    <label class="labelText" for="identificationType">Identification type:</label> 
+                    <div class="select-container-intern">
+                        <div class="select-container">
+                          <select id="selectIdentificationTypes" 
+                                  placeholder="IdentificationTypes" 
+                                  [(ngModel)]="identificationTypeId" >
+                            <option *ngFor="let option of identificationTypeOptions" 
+                                    [value]="option.id">{{ option.name }}</option>
+                          </select>
+                      </div>
+                    </div>
+                  </div> 
+                  
+                  <div class="form-group">
+                    <label class="labelText" for="name">Name:</label>
+                    <input class="inputText" 
+                            type="text"
+                            id="name" 
+                            name="name" 
+                            [(ngModel)]="name">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="labelText" for="lastName">Last Name:</label>
+                    <input class="inputText" 
+                            type="text" 
+                            id="lastName" 
+                            name="lastName" 
+                            [(ngModel)]="lastName">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="labelText" for="birthDay">BirthDay:</label>
+                    <input class="inputText" 
+                            type="text" 
+                            id="birthDay" 
+                            name="birthDay" 
+                            [(ngModel)]="birthDay">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="labelText" for="email">Email:</label>
+                    <input class="inputText" 
+                            type="text" 
+                            id="email" 
+                            name="email" 
+                            [(ngModel)]="email">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="labelText" for="phoneNumber">Phone Number:</label>
+                    <input class="inputText" 
+                            type="text" 
+                            id="phoneNumber" 
+                            name="phoneNumber" 
+                            [(ngModel)]="phoneNumber">
+                  </div> 
+                  
+                  <div class="form-group">
+                    <label class="labelText" for="shippingAddress">Shipping address:</label>
+                    <input class="inputText" 
+                            type="text" 
+                            id="shippingAddress" 
+                            name="shippingAddress" 
+                            [(ngModel)]="shippingAddress">
+                  </div> 
+                  
+                </form>
+                <button class="button" (click)="submitForm()">Submit</button>
+              </div>
+        </div>
+        <div class="separator"></div>
+      </div>
+    </div>
+  </div>
