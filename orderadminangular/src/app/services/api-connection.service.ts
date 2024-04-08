@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CategoryDTO } from '@app/models/category.model';
 import { IdentificationTypeDTO } from '@app/models/identificationType.model';
+import { OrderInformation } from '@app/models/orderInformation.model';
 import { OrderRequest } from '@app/models/orderRequest.model';
 import { ProductDTO } from '@app/models/product.model';
 import { environment } from 'enviroment/enviroment';
@@ -72,5 +73,20 @@ export class ApiConnectionService {
       .pipe(
         map((Response) => Response.data)
       )
+  }
+
+  getOrdersInformation(
+  ): Observable<OrderInformation[]> {
+    let url = `${this.baseUrl}/api/OrderHdr/GetOrdersInformation`;
+
+    return this.http.get<any>(url).pipe(
+      map((response: any) => { 
+        return response
+      }),
+      catchError((error: any) => {
+        console.error('Error getting orders:', error);
+        return [];
+      })
+    );
   }
 }

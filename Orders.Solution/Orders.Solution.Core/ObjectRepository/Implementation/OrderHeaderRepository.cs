@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Azure;
+using Microsoft.EntityFrameworkCore;
 using Orders.Solution.Core.BaseRepository;
 using Orders.Solution.Core.Data;
 using Orders.Solution.Core.Models;
@@ -52,6 +53,39 @@ namespace Orders.Solution.Core.ObjectRepository.Implementation
             }
 
             return true;
+        }
+         
+        public async Task<IEnumerable<OrderInformation>> GetOrdersInformation()
+        {
+            var ordersHdr = await _dbcontext.OrderHdrs
+                                    .Join(_dbcontext.Customers,
+                                        o => o.CustomerId, 
+                                        c => c.ID, 
+                                        (o, c) => new { order = o, Customer = c })
+
+                            .Select(p => new OrderInformation
+                            {
+                                ID = p.order.ID,
+                                OrderDate = p.order.OrderDate,
+                                ShippingAddress = p.order.ShippingAddress,
+                                CompleteName = $"{p.Customer.Name} {p.Customer.LastName}",
+                                IdentificationType = _dbcontext.IdentificationTypes
+                                                        .Where(i => i.ID == p.Customer.IdentificationTypeId)
+                                                        .Select(i => i.Name)
+                                                        .FirstOrDefault(),
+                                Identification = p.Customer.Identification,
+                                Email = p.Customer.Email,
+                                PhoneNumber = p.Customer.PhoneNumber,
+                                TotalPrice = _dbcontext.OrderDtls
+                                                .Where(d => d.OrderHdrId == p.order.ID)
+                                                .Sum(d => d.Price),
+                                TotalQty = _dbcontext.OrderDtls
+                                                .Where(d => d.OrderHdrId == p.order.ID)
+                                                .Sum(d => d.Qty)
+                            })
+                            .ToListAsync();
+
+            return ordersHdr;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Orders.Solution.Core.BaseRepository
         public async Task<IQueryable<T>> AsQueryable()
         {
             return dbSet.AsQueryable();
-        }
+        } 
 
         public async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
         {

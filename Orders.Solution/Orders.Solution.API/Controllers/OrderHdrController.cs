@@ -18,10 +18,10 @@ namespace Orders.Solution.API.Controllers
         }
 
         // GET: api/<ValuesController>
-        [HttpGet("GetOrderHdrs")]
-        public async Task<IActionResult> GetOrderHdrs()
+        [HttpGet("GetOrdersInformation")]
+        public async Task<IActionResult> GetOrdersInformation()
         {
-            var orderHdrs = await _orderHdrRepository.GetAll();
+            var orderHdrs = await _orderHdrRepository.GetOrdersInformation();
             return Ok(orderHdrs);
         }
 
