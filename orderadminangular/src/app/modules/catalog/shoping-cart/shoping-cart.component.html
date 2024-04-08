@@ -1,0 +1,75 @@
+
+<div class="mat-app-backgroud basic-container">
+    <div class="contain-main">
+      <div class="contain-head">
+        <div class="contain-title">Shopping Cart</div> 
+      </div>
+      <div class="contain-body">
+        <div class="contain-table">
+          <table mat-table [dataSource]="dataSource">
+  
+            <ng-container matColumnDef="Product_Code">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>Product Code</th>
+              <td mat-cell *matCellDef="let element">{{ element.productCode }}</td>
+            </ng-container>  
+  
+            <ng-container matColumnDef="Name">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>Name</th>
+              <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+            </ng-container>   
+  
+            <ng-container matColumnDef="Description">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>Description</th>
+              <td mat-cell *matCellDef="let element" [title]="element.description">{{ element.description.length > 40 ? (element.description | slice:0:40) + '...' : element.description }}</td>
+            </ng-container> 
+  
+            <ng-container matColumnDef="Price">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>Price</th>
+              <td mat-cell class="price-cell" *matCellDef="let element">{{ element.price | currency:'COP: ':'symbol':'1.0-0' }}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="Stock">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>Stock</th>
+              <td mat-cell class="price-cell" *matCellDef="let element">{{ element.stockQty }}</td>
+            </ng-container>
+            
+            <ng-container matColumnDef="OrderQty">
+              <th mat-header-cell *matHeaderCellDef>Order Qty</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button 
+                        (click)="decrementQty(element)" 
+                        [disabled]="isOrderQtyZero(element)" 
+                        [ngClass]="{'error-border': isOrderQtyZero(element)}">
+                  <mat-icon>remove</mat-icon>
+                </button>
+                <input class="numberfield" 
+                        type="text" 
+                        appNumericInput 
+                        [(ngModel)]="element.orderQty" 
+                        min="0" 
+                        [max]="element.stockQty" 
+                        [ngClass]="{'error-border': isOrderQtyExceed(element) || isOrderQtyZero(element)}">
+                <button mat-icon-button
+                        (click)="incrementQty(element)" 
+                        [disabled]="isOrderQtyExceed(element)" 
+                        [ngClass]="{'error-border': isOrderQtyExceed(element)}">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            <tr *matNoDataRow>
+              <td class="mat-cell-emptyResults" colspan="6">
+                <div class="no-results-content">
+                  <img src="../../../../../../assets/img/emptyResults.png" alt="emptyResults" />
+                  <p>empty Results</p>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

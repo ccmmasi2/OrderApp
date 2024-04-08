@@ -5,11 +5,13 @@ import { CatalogRoutingModule } from './catalog-routing.module';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@app/material/material.module';
 import { NumericInputDirective } from '@app/rules/numeric-input.directive';
+import { ShopingCartComponent } from './shoping-cart/shoping-cart.component';
 
 @NgModule({
   declarations: [
     ProductListComponent,
-    NumericInputDirective
+    NumericInputDirective,
+    ShopingCartComponent
   ],
   imports: [
     CommonModule,

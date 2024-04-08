@@ -43,7 +43,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.loadDataOptions();
     this.getList(this.categoryId, this.pageIndex, this.pageSizeLength, this.sorting);
-    this.initializePagination(this.pageIndex, this.pageSizeLength, this.length)
+    this.initializePagination(this.pageIndex, this.pageSizeLength, this.length);
   }
 
   initializePagination(pageObj: number, pageSizeObj: number, lengthObj: number){
@@ -150,6 +150,9 @@ export class ProductListComponent implements OnInit {
       const productToAdd = { ...product };  
       this.cartItems.push({ product: productToAdd, quantity: product.orderQty });
       console.log('added');
+
+      localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+
       const message = `Product "${product.name}" - "${product.productCode}" with amoutn "${product.orderQty}" addedd to Cart`
       this.appComponent.showAlert(message, 'success'); 
     } else {
