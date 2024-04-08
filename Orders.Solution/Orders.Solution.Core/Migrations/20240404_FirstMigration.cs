@@ -96,7 +96,6 @@ namespace Orders.Solution.Core.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_STOCK", x => x.ID);
-                    table.UniqueConstraint("UQ_STOCK_PRODUCTID", x => x.ProductId);
                     table.ForeignKey(
                         name: "FK_STOCK_PRODUCTS",
                         column: x => x.ProductId,

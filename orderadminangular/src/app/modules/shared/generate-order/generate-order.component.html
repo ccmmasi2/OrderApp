@@ -8,7 +8,7 @@
       <div class="contain-table">
           <div class="form-container">
               <h2>Customer information</h2>
-              <form #orderForm="ngForm" (ngSubmit)="submitForm()"> 
+              <form #orderForm="ngForm"> 
                 
                 <div class="form-group">
                   <label class="labelText" for="selectIdentificationTypes">Identification type:</label> 
@@ -17,9 +17,10 @@
                         <select id="selectIdentificationTypes" 
                                 name="selectIdentificationTypes"
                                 placeholder="IdentificationTypes" 
-                                [(ngModel)]="identificationTypeId" 
+                                [(ngModel)]="selectIdentificationTypeId" 
                                 required
-                                #identificationTypeIdField="ngModel">
+                                #identificationTypeIdField="ngModel"
+                                [ngClass]="{ 'select-container': true, 'ng-invalid': identificationTypeIdField.invalid && (identificationTypeIdField.dirty || identificationTypeIdField.touched) }">
                           <option *ngFor="let option of identificationTypeOptions" 
                                   [value]="option.id">{{ option.name }}</option>
                         </select>
@@ -36,7 +37,8 @@
                           [(ngModel)]="identification"
                           maxlength="10"
                           required
-                          #identificationField="ngModel">
+                          #identificationField="ngModel"
+                          [ngClass]="{ 'inputText': true, 'ng-invalid': identificationField.invalid && (identificationField.dirty || identificationField.touched) }">
                 </div>
                 
                 <div class="form-group">
@@ -48,7 +50,8 @@
                           [(ngModel)]="name"
                           maxlength="50"
                           required
-                          #nameField="ngModel">
+                          #nameField="ngModel"
+                          [ngClass]="{ 'inputText': true, 'ng-invalid': nameField.invalid && (nameField.dirty || nameField.touched) }">
                 </div>
                 
                 <div class="form-group">
@@ -60,7 +63,8 @@
                           [(ngModel)]="lastName"
                           maxlength="50"
                           required
-                          #lastNameField="ngModel">
+                          #lastNameField="ngModel"
+                          [ngClass]="{ 'inputText': true, 'ng-invalid': lastNameField.invalid && (lastNameField.dirty || lastNameField.touched) }">
                 </div>
                 
                 <div class="form-group">
@@ -71,7 +75,8 @@
                           name="birthDay" 
                           [(ngModel)]="birthDay"
                           required
-                          #birthDayField="ngModel">
+                          #birthDayField="ngModel"
+                          [ngClass]="{ 'inputText': true, 'ng-invalid': birthDayField.invalid && (birthDayField.dirty || birthDayField.touched) }">
                 </div>
                 
                 <div class="form-group">
@@ -83,7 +88,8 @@
                           [(ngModel)]="email"
                           maxlength="100"
                           required
-                          #emailField="ngModel">
+                          #emailField="ngModel"
+                          [ngClass]="{ 'inputText': true, 'ng-invalid': emailField.invalid && (emailField.dirty || emailField.touched) }">
                 </div>
                 
                 <div class="form-group">
@@ -104,7 +110,8 @@
                           name="shippingAddress" 
                           [(ngModel)]="shippingAddress"
                           required
-                          #shippingAddressField="ngModel">
+                          #shippingAddressField="ngModel"
+                          [ngClass]="{ 'inputText': true, 'ng-invalid': shippingAddressField.invalid && (shippingAddressField.dirty || shippingAddressField.touched) }">
                 </div> 
                 
                 <div class="totals-container">
@@ -112,7 +119,7 @@
                   <div>Total: {{ totalSum | currency:'COP: ':'symbol':'1.0-0' }}</div>
                 </div> 
               </form>
-              <button class="button" type="submit">Submit</button>
+              <button class="button" type="submit" (click)="submitForm()">Submit</button>
             </div>
       </div>
       <div class="separator"></div>

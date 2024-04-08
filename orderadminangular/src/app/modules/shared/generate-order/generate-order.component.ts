@@ -20,10 +20,9 @@ export class GenerateOrderComponent implements OnInit {
   totalQty: number = 0;
   totalSum: number = 0;
 
-  identificationTypeId: number = 0;
+  selectIdentificationTypeId: number = 0;
   identificationTypeOptions: IdentificationTypeDTO[] = [];
 
-  identificationType: string = '';
   identification: number = 0;
   name: string = '';
   lastName: string = '';
@@ -60,12 +59,19 @@ export class GenerateOrderComponent implements OnInit {
       const message = `Error loading identification types: "${error}"`
       this.alertService.showAlert(message, 'error'); 
     })
-  } 
+  }  
 
-  validateAge(birthDay: Date): boolean {
+  validateAge(birthDay: Date | string): boolean {
+    if (typeof birthDay === 'string') {
+        birthDay = new Date(birthDay);
+    }
+    
+    if (!(birthDay instanceof Date) || isNaN(birthDay.getTime())) {
+        return false;
+    }
+
     const currentDate = new Date();
-    const dateOfBirth = birthDay;
-    const diff = currentDate.getTime() - dateOfBirth.getTime();
+    const diff = currentDate.getTime() - birthDay.getTime();
     const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
     return age >= 18;
   }
@@ -78,17 +84,20 @@ export class GenerateOrderComponent implements OnInit {
         return;
       }
       else {
+        console.log("this.cartItems");
+        console.log(this.cartItems);
+
         const orderRequest: OrderRequest = {
           customer: {
             name: this.name,
             lastName: this.lastName, 
-            identificationTypeId: this.identificationTypeId, 
+            identificationTypeId: this.selectIdentificationTypeId, 
             identification: this.identification,
             birthDay: this.birthDay,
             email: this.email, 
             phoneNumber: this.phoneNumber
           },
-          lProducts: this.cartItems,
+          Products: this.cartItems,
           shippingAddress: this.shippingAddress
         }
   
@@ -103,6 +112,6 @@ export class GenerateOrderComponent implements OnInit {
           }
         );
       } 
-    }
+    } 
   }
 }
