@@ -4,23 +4,23 @@ import { useNavigate  } from 'react-router-dom';
 const HeaderForm = () => {
     
     const [selectedOption, setSelectedOption] = useState('1');
-    const history = useNavigate ();
+    const navigate = useNavigate ();
 
     const onHomeButtonClick = () => {
-        history.push('/');
+        navigate('/home/home-form');
     };
 
     const onOptionChange = (event) => {
         const selectedValue = event.target.value;
     
         if (selectedValue === '1') {
-          history.push('/');
+            navigate('/home/home-form');
         } else if (selectedValue === '2') {
-          history.push('/Order/catalog');
+            navigate('/catalog/product-list/product-list-form');
         } else if (selectedValue === '3') {
-          history.push('/Order/shopping-cart');
+            navigate('/catalog/shopping-cart/shopping-cart-form');
         } else if (selectedValue === '4') {
-          history.push('/Order/order-list');
+            navigate('/catalog/order-list/order-list-form');
         }
     
         setSelectedOption(selectedValue);
