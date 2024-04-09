@@ -1,6 +1,7 @@
-import HeaderForm from './../components/layout/header/header-form';
 import React, { useEffect, useState } from "react";
+import HeaderForm from './../components/layout/header/header-form';
 import { getCategories } from '../services/ApiConnectionService';
+import { PaginationTable } from '../components/pagination/PaginationTable'
 
 export default function ProductList() {
     const [categories, setCategories] = useState([]);
@@ -15,22 +16,22 @@ export default function ProductList() {
             }
         };
         fetchData();
-    }, []);
+    }, []); 
 
     return (
         <>
             <HeaderForm />
-            <div class="separator"></div>
-            <div class="mat-app-backgroud basic-container">
-                <div class="contain-main">
-                    <div class="contain-head">
-                        <div class="contain-title">Catalog of products</div> 
+            <div className="separator"></div>
+            <div className="mat-app-backgroud basic-container">
+                <div className="contain-main">
+                    <div className="contain-head">
+                        <div className="contain-title">Catalog of products</div> 
                     </div>
-                    <div class="contain-body">
+                    <div className="contain-body">
 
-                        <div class="select-container-intern">
+                        <div className="select-container-intern">
                             <div>Category:</div> 
-                            <div class="select-container">
+                            <div className="select-container">
                                 <select>
                                 <option key="0" value="0">All</option>
                                 {categories.map((category) => (
@@ -39,17 +40,16 @@ export default function ProductList() {
                                 </select>
                             </div>
                         </div>
-                        <div class="separator"></div>
-                        <div class="contain-table">
-
+                        <div className="separator"></div>
+                        <div className="contain-table">
+                            <PaginationTable/>
                         </div>
-
-                        <div class="contain-paginate">
-
-                        </div>
-                        
                     </div>
                 </div>
+            </div>
+            <br></br> 
+            <div className="contain-table">
+
             </div>
         </>
     )
