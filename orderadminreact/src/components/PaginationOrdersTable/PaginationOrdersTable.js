@@ -1,25 +1,25 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useTable, usePagination } from 'react-table'
-import { ProductColumns } from './ProductColumns'
+import { OrderColumns } from './OrderColumns'
 import '../../table.css';
-import { getProductsByCategoryId } from '../../services/ApiConnectionService';
+import { getOrdersInformation } from '../../services/ApiConnectionService';
 
-export const PaginationProductTable = ({ categoryId }) => {
-  const columns = useMemo(() => ProductColumns, []);
+export const PaginationOrdersTable = () => {
+  const columns = useMemo(() => OrderColumns, []);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productsData = await getProductsByCategoryId(categoryId);
-        setData(productsData);
+        const ordersData = await getOrdersInformation();
+        setData(ordersData);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error('Error fetching orders:', error);
       }
     };
 
     fetchData();
-  }, [categoryId]);
+  }, []);
 
   const {
     getTableProps,
