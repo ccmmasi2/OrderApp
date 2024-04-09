@@ -59,5 +59,31 @@ namespace Orders.Solution.Core.ObjectRepository.Implementation
 
             return new PagedList<ProductDTO>(products, totalRecords, page, sizePage);
         }
+
+        public async Task<List<ProductDTO>> GetProductsByCategoryId(int categoryId)
+        {
+            IQueryable<ProductDTO> query = _dbcontext.Products;
+
+            if (categoryId != 0)
+            {
+                query = query.Where(p => p.CategoryId == categoryId);
+            }
+
+            var products = await query
+                            .Select(p => new ProductDTO
+                            {
+                                ID = p.ID,
+                                Name = p.Name,
+                                Description = p.Description,
+                                ProductCode = p.ProductCode,
+                                Price = p.Price,
+                                CategoryId = p.CategoryId,
+                                StockQty = _dbcontext.Stock.Where(s => s.ProductId == p.ID).Sum(s => s.Qty),
+                                OrderQty = 0
+                            })
+                            .ToListAsync();
+
+            return products;
+        }
     }
 }

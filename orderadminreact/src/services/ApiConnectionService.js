@@ -2,7 +2,7 @@ const baseUrl = 'http://localhost:5143';
 const urlGetCategories = '/api/Category/GetCategories';
 const urlGetIdentificationTypes = '/api/Category/GetCategories';
 const urlGetOrdersInformation = '/api/OrderHdr/GetOrdersInformation';
-const urlGetProductsByCategoryId = '/api/Product/GetProductsByCategoryId';
+const urlGetProductsByCategoryId = '/api/Product/GetProductsByCategoryIdNoPag';
 const urlCreateOrder = '/api/OrderHdr/AddOrderRequest';
 
 export const getCategories = async () => {
@@ -23,31 +23,13 @@ export const getOrdersInformation = async () => {
     return data;
 };
 
-export const getProductsByCategoryId = async (
-  categoryId,
-  page,
-  sizePage,
-  sorting
-) => {
-  let url = `${baseUrl}${urlGetProductsByCategoryId}?categoryId=${categoryId}&page=${page}&sizePage=${sizePage}`;
-
-  if (sorting) {
-    url += `&sorting=${sorting}`;
-  }
+export const getProductsByCategoryId = async (categoryId) => {
+  let url = `${baseUrl}${urlGetProductsByCategoryId}?categoryId=${categoryId}`;
 
   try {
     const response = await fetch(url);
-    const responseData = await response.json();
-
-    const productsData = {
-      currentPage: responseData.page,
-      sizePage: responseData.pageSize,
-      sorting: responseData.sorting,
-      totalRecords: responseData.totalCount,
-      data: responseData.data
-    };
-
-    return productsData;
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error('Error getting Products by Category Id:', error);
     throw error;  

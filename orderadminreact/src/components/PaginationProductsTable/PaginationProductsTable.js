@@ -4,24 +4,22 @@ import { ProductColumns } from './ProductColumns'
 import '../../table.css';
 import { getProductsByCategoryId } from '../../services/ApiConnectionService';
 
-export const PaginationProductTable = () => {
+export const PaginationProductTable = ({ categoryId }) => {
   const columns = useMemo(() => ProductColumns, []);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productsData = await getProductsByCategoryId(0, 1, 10, '');
-        console.log("productsData");
-        console.log(productsData.data);
-        setData(productsData.data);
+        const productsData = await getProductsByCategoryId(categoryId);
+        setData(productsData);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [categoryId]);
 
   const {
     getTableProps,

@@ -5,6 +5,7 @@ import { PaginationProductTable } from '../components/PaginationProductsTable/Pa
 
 export default function ProductList() {
     const [categories, setCategories] = useState([]);
+    const [selectedCategoryId, setSelectedCategoryId] = useState(0); 
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,6 +18,11 @@ export default function ProductList() {
         };
         fetchData();
     }, []); 
+
+    const handleCategoryChange = (event) => {
+        const categoryId = parseInt(event.target.value);
+        setSelectedCategoryId(categoryId);
+    };
 
     return (
         <>
@@ -32,25 +38,21 @@ export default function ProductList() {
                         <div className="select-container-intern">
                             <div>Category:</div> 
                             <div className="select-container">
-                                <select>
-                                <option key="0" value="0">All</option>
-                                {categories.map((category) => (
-                                <option key={category.id} value={category.id}>{category.name}</option>
-                                ))}
+                                <select onChange={handleCategoryChange}>
+                                    <option key="0" value="0">All</option>
+                                    {categories.map((category) => (
+                                    <option key={category.id} value={category.id}>{category.name}</option>
+                                    ))}
                                 </select>
                             </div>
                         </div>
                         <div className="separator"></div>
                         <div className="contain-table">
-                            <PaginationProductTable/>
+                            <PaginationProductTable categoryId={selectedCategoryId}/>
                         </div>
                     </div>
                 </div>
-            </div>
-            <br></br> 
-            <div className="contain-table">
-
-            </div>
+            </div> 
         </>
     )
 };

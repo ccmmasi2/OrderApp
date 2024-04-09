@@ -22,6 +22,14 @@ namespace Orders.Solution.API.Controllers
         {
             var products = await _productRepository.GetProductsByCategoryId(categoryId, page, sizePage, sorting);
             return Ok(products);
-        } 
+        }
+
+        // GET: api/<ValuesController>
+        [HttpGet("GetProductsByCategoryIdNoPag")]
+        public async Task<IActionResult> GetProductsByCategoryId(int categoryId)
+        {
+            var products = await _productRepository.GetProductsByCategoryId(categoryId);
+            return Ok(products);
+        }
     }
 }
