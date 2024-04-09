@@ -1,12 +1,27 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect, useState } from 'react';
 import { useTable, usePagination } from 'react-table'
-import MOCK_DATA from './MOCK_DATA.json'
 import { ProductColumns } from './ProductColumns'
-import '../../table.css'
+import '../../table.css';
+import { getProductsByCategoryId } from '../../services/ApiConnectionService';
 
 export const PaginationProductTable = () => {
-  const columns = useMemo(() => ProductColumns, [])
-  const data = useMemo(() => MOCK_DATA, [])
+  const columns = useMemo(() => ProductColumns, []);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const productsData = await getProductsByCategoryId(0, 1, 10, '');
+        console.log("productsData");
+        console.log(productsData.data);
+        setData(productsData.data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const {
     getTableProps,
@@ -32,7 +47,7 @@ export const PaginationProductTable = () => {
     usePagination
   )
 
-  const { pageIndex, pageSize } = state
+  const { pageIndex, pageSize } = state;
 
   return (
     <>
@@ -48,14 +63,14 @@ export const PaginationProductTable = () => {
         </thead>
         <tbody {...getTableBodyProps()}>
           {page.map(row => {
-            prepareRow(row)
+            prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map(cell => {
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
               </tr>
-            )
+            );
           })}
         </tbody>
       </table>
@@ -84,8 +99,8 @@ export const PaginationProductTable = () => {
             type='number'
             defaultValue={pageIndex + 1}
             onChange={e => {
-              const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
-              gotoPage(pageNumber)
+              const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0;
+              gotoPage(pageNumber);
             }}
             style={{ width: '50px' }}
           />

@@ -20,7 +20,7 @@ export const ProductColumns = [
   },
   {
     Header: 'Stock',
-    accessor: 'stock'
+    accessor: 'stockQty'
   },
   {
     Header: 'Order qty',
