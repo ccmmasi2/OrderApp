@@ -20,13 +20,36 @@ export default function ProductList() {
     return (
         <>
             <HeaderForm />
-            <div> 
-                <select>
-                    <option key="0" value="0">All</option>
-                    {categories.map((category) => (
-                        <option key={category.id} value={category.id}>{category.name}</option>
-                    ))}
-                </select>
+            <div class="separator"></div>
+            <div class="mat-app-backgroud basic-container">
+                <div class="contain-main">
+                    <div class="contain-head">
+                        <div class="contain-title">Catalog of products</div> 
+                    </div>
+                    <div class="contain-body">
+
+                        <div class="select-container-intern">
+                            <div>Category:</div> 
+                            <div class="select-container">
+                                <select>
+                                <option key="0" value="0">All</option>
+                                {categories.map((category) => (
+                                <option key={category.id} value={category.id}>{category.name}</option>
+                                ))}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="separator"></div>
+                        <div class="contain-table">
+
+                        </div>
+
+                        <div class="contain-paginate">
+
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
         </>
     )

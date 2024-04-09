@@ -4,6 +4,7 @@ export default function OrderList() {
     return (
         <>
             <HeaderForm />
+            <div class="separator"></div>
             <h2>Order List</h2>
         </>
     )

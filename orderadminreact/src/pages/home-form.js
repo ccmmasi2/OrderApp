@@ -4,6 +4,7 @@ export default function Home() {
     return (
         <>
             <HeaderForm />
+            <div class="separator"></div>
             <div className="matrix-info">
                 <div className="separator"></div>
                 <div>
