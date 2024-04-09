@@ -2,9 +2,8 @@ import React from "react";
 
 const HomeForm = () => {
     return(
-        <div class="matrix-info">
-            <h2>Order administration</h2>
-            <div class="separator"></div>
+        <div className="matrix-info">
+            <div className="separator"></div>
             <div>
                 <h3>In the upper side you will find a Select control:</h3>
                 <p>1 - Select Catalog option to watch all products and select amount to add to the cart</p> 

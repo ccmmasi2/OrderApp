@@ -23,6 +23,7 @@ header {
   justify-content: center;
   align-items: center;
   gap: 32px;
+  width: 50%;
 }
 
 .navbar-brand {

@@ -27,16 +27,16 @@ const HeaderForm = () => {
     };
 
     return(
-        <div class="navbar">
+        <div className="navbar">
             <div>
                 <h2>Orders administration</h2>
             </div>
             
-            <button onClick={onHomeButtonClick} class="button">
-                <span class="label">Home</span>
+            <button onClick={onHomeButtonClick} className="button">
+                <span className="label">Home</span>
             </button>
             
-            <div class="select-container">
+            <div className="select-container">
                 <select id="selectOption" onChange={onOptionChange} value={selectedOption}>
                     <option value="1">Select an option</option>
                     <option value="2">Catalog</option>

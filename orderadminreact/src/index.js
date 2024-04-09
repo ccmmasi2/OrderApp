@@ -17,6 +17,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <HeaderForm />
+      <HomeForm/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
