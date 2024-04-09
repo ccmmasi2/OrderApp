@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HeaderForm from './../components/layout/header/header-form';
 import { getCategories } from '../services/ApiConnectionService';
-import { PaginationTable } from '../components/pagination/PaginationTable'
+import { PaginationTable } from '../components/OrderListTable/PaginationTable'
 
 export default function ProductList() {
     const [categories, setCategories] = useState([]);
