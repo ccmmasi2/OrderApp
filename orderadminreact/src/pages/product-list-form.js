@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HeaderForm from './../components/layout/header/header-form';
 import { getCategories } from '../services/ApiConnectionService';
-import { PaginationTable } from '../components/OrderListTable/PaginationTable'
+import { PaginationProductTable } from '../components/PaginationProductsTable/PaginationProductsTable'
 
 export default function ProductList() {
     const [categories, setCategories] = useState([]);
@@ -42,7 +42,7 @@ export default function ProductList() {
                         </div>
                         <div className="separator"></div>
                         <div className="contain-table">
-                            <PaginationTable/>
+                            <PaginationProductTable/>
                         </div>
                     </div>
                 </div>

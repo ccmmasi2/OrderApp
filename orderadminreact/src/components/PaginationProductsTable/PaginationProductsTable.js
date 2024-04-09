@@ -2,9 +2,9 @@ import React, { useMemo } from 'react'
 import { useTable, usePagination } from 'react-table'
 import MOCK_DATA from './MOCK_DATA.json'
 import { ProductColumns } from './ProductColumns'
-import './table.css'
+import '../../table.css'
 
-export const PaginationTable = () => {
+export const PaginationProductTable = () => {
   const columns = useMemo(() => ProductColumns, [])
   const data = useMemo(() => MOCK_DATA, [])
 
