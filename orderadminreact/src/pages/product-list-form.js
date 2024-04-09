@@ -1,6 +1,6 @@
 import HeaderForm from './../components/layout/header/header-form';
 import React, { useEffect, useState } from "react";
-import { listCategories } from '../services/ApiConnectionService';
+import { getCategories } from '../services/ApiConnectionService';
 
 export default function ProductList() {
     const [categories, setCategories] = useState([]);
@@ -8,7 +8,7 @@ export default function ProductList() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await listCategories();
+                const data = await getCategories();
                 setCategories(data);
             } catch (error) {
                 console.log(error);
