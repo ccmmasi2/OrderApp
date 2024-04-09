@@ -105,7 +105,7 @@ export class GenerateOrderComponent implements OnInit {
           (response) => {
             localStorage.removeItem('cartItems');
 
-            const message = `Order created successfully: "${response}"`
+            const message = `Order created successfully`
             this.alertService.showAlert(message, 'success'); 
 
             this.dialog.closeAll();

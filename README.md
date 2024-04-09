@@ -17,8 +17,14 @@ BackEnd:
  
 To run correctly this project please follow the next instructions:
 
-1 - Select the correct brach, It's Develop branc
-2- set the correct port number on the enviroment/enviroment.ts file
-3 - In backend, setup the correct name for Server in the connectionstring on appsettings.Development.json
-4 - Once you run the backend project the database will be created using codefirst and scaffolding
+- Download the project
+- Search the OrderApp folder on your PC
+	- In this folder you can found other 2 folders: 
+		- Backend project: Orders.Solution C# | .NetCore 8 | You have to use Visual Studio 2022
+		- Frontend project: orderadminangular Angular 
+- Once opened the frontend project with Visual Studio Code, you need to run "npm install" command
+- Open the BackEnd with Visual Studio 2022, It can use Net Core 8 
+- set the correct port number on the enviroment/enviroment.ts file
+- In backend, setup the correct name for Server in the connectionstring on appsettings.Development.json
+- Once you run the backend project the database will be created using codefirst and scaffolding with some data
 	
