@@ -4,6 +4,8 @@ import { ShoppingColumns } from './ShoppingColumns'
 import '../../table.css';
 import { FaTrash } from 'react-icons/fa';  
 import MessageBar from '../shared/show-message/MessageBar';
+import Modal from 'react-modal'; 
+import GenerateOrder from '../shared/generate-order/generate-order-form';
 
 export const PaginationShoppingTable = () => {
   const columns = useMemo(() => ShoppingColumns, []);
@@ -12,6 +14,7 @@ export const PaginationShoppingTable = () => {
   const [showMessage, setMessage] = useState('');
   const [totalQty, setTotalQty] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem('cartItems');
@@ -26,7 +29,7 @@ export const PaginationShoppingTable = () => {
     getTotalQty();
     getTotalPrice(); 
   }, [cartItems]);
-  
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -119,6 +122,14 @@ export const PaginationShoppingTable = () => {
     }
     setTotalPrice(_totalPrice);
   }; 
+
+  const handleGenerateOrder = () => {
+    setIsModalOpen(true);
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false);  
+  };
 
   return (
     <>
@@ -228,10 +239,25 @@ export const PaginationShoppingTable = () => {
       <div className="Totals">
         <div>Total Qty: {totalQty} </div>
         <div>Total: {totalPrice} </div>
-        <button className="button">
-          Create order
+        <button className="button"
+                onClick={handleGenerateOrder} >
+                Create order
         </button> 
       </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Generate Order Modal"
+        ariaHideApp={false}  
+      >
+        {}
+        <GenerateOrder
+          totalQty={totalQty}
+          totalSum={totalPrice}
+          cartItems={cartItems}
+        />
+      </Modal>
     </>
   )
 }

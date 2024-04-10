@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
   const [identificationTypeOptions, setIdentificationTypeOptions] = useState([]);
@@ -11,8 +10,6 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [shippingAddress, setShippingAddress] = useState('');
-
-  const history = useHistory();
 
   useEffect(() => {
     // Simulate fetching identification type options from API
