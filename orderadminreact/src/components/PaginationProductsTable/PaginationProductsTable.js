@@ -150,11 +150,10 @@ export const PaginationProductTable = ({ categoryId }) => {
                   }
                   else if(cell.column.id === 'addToCart') {
                     return <td {...cell.getCellProps()}>
-                              <button  
+                              <button onClick={() => addToCart(row.original)}  
                                 className={`button ${row.original.orderQty === 0 || row.original.orderQty > row.original.stockQty ? 'error-border' : ''}`}
                                 disabled={row.original.orderQty === 0 || row.original.orderQty > row.original.stockQty}>
-                                <FaShoppingCart size={20}
-                                onClick={() => addToCart(row.original)} />
+                                <FaShoppingCart size={20} />
                               </button>
                             </td>
                   }

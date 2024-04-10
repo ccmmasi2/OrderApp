@@ -6,8 +6,11 @@ import { FaTrash } from 'react-icons/fa';
 import MessageBar from '../shared/show-message/MessageBar';
 import Modal from 'react-modal'; 
 import GenerateOrder from '../shared/generate-order/generate-order-form';
+import { useNavigate  } from 'react-router-dom';
 
 export const PaginationShoppingTable = () => {
+  const navigate = useNavigate ();
+
   const columns = useMemo(() => ShoppingColumns, []);
   const [data, setData] = useState([]);
   const [cartItems, setCartItems] = useState([]); 
@@ -129,6 +132,7 @@ export const PaginationShoppingTable = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);  
+    navigate('/Catalog');
   };
 
   return (
@@ -264,6 +268,7 @@ export const PaginationShoppingTable = () => {
           totalQty={totalQty}
           totalSum={totalPrice}
           cartItems={cartItems}
+          closeModal={closeModal}
         />
       </Modal>
     </>

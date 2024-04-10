@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { getIdentificationTypes } from '../../../services/ApiConnectionService';
 import { createOrder } from '../../../services/ApiConnectionService';
 import MessageBar from '../show-message/MessageBar';
-import { useNavigate  } from 'react-router-dom';
 
-const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
-  const navigate = useNavigate ();
+const GenerateOrder = ({ totalQty, totalSum, cartItems, closeModal }) => {
 
   const [identificationTypeOptions, setIdentificationTypeOptions] = useState([]);
   const [selectIdentificationTypeId, setIdentificationTypeId] = useState(1); 
@@ -49,9 +47,11 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
     const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
   
     return age >= 18;
-  }; 
+  };  
 
   const submitForm = async (event) => {
+    event.preventDefault();
+
     if (
       inputIdentification &&
       inputName &&
@@ -81,11 +81,10 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
 
         try {
           const response = await createOrder(orderRequest);
-          localStorage.removeItem('cartItems');
-          navigate('/Order-List');
 
-          const infoMessage = `Order created successfully: "${response}"`;
-          setMessage({ message: infoMessage, messageType: 'success' }); 
+          localStorage.removeItem('cartItems');
+
+          closeModal();
         } catch (error) {
           const errorMessage = `An error occurred while creating the order. Please try again later.`;
           setMessage({ message: errorMessage, messageType: 'error' }); 
@@ -241,7 +240,7 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
                     <div>Total: {totalSum}</div>
                   </div>
 
-                  <button className="button" type="submit">
+                  <button className="button" type='submit' >
                     Submit
                   </button>
 
