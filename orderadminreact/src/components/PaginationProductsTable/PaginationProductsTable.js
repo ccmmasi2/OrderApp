@@ -4,11 +4,13 @@ import { ProductColumns } from './ProductColumns'
 import '../../table.css';
 import { getProductsByCategoryId } from '../../services/ApiConnectionService';
 import { FaShoppingCart } from 'react-icons/fa';  
+import MessageBar from '../shared/show-message/MessageBar';
 
 export const PaginationProductTable = ({ categoryId }) => {
   const columns = useMemo(() => ProductColumns, []);
   const [data, setData] = useState([]);
   const [cartItems, setCartItems] = useState([]); 
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,7 +18,8 @@ export const PaginationProductTable = ({ categoryId }) => {
         const productsData = await getProductsByCategoryId(categoryId);
         setData(productsData);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        const message = `Error fetching products: "${error}"`;
+        setErrorMessage(message);
       }
     };
 
@@ -58,7 +61,7 @@ export const PaginationProductTable = ({ categoryId }) => {
         newData[index].orderQty += 1;
         setData(newData);
       } else {
-        console.log("no stock");
+        setErrorMessage('No stock');
       }
   };
 
@@ -94,14 +97,16 @@ export const PaginationProductTable = ({ categoryId }) => {
       }
   
       const message = `Product "${product.name}" - "${product.productCode}" with amount "${product.orderQty}" added to Cart`;
-      console.log(message);
+      setErrorMessage(message);
     } else {
-      console.log("Invalid amount");
+      setErrorMessage('Invalid amount');
     }
   };
 
   return (
     <>
+      <MessageBar message={errorMessage} />
+
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (

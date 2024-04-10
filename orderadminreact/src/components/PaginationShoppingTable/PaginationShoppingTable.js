@@ -3,11 +3,13 @@ import { useTable, usePagination } from 'react-table'
 import { ShoppingColumns } from './ShoppingColumns'
 import '../../table.css';
 import { FaTrash } from 'react-icons/fa';  
+import MessageBar from '../shared/show-message/MessageBar';
 
 export const PaginationShoppingTable = () => {
   const columns = useMemo(() => ShoppingColumns, []);
   const [data, setData] = useState([]);
   const [cartItems, setCartItems] = useState([]); 
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem('cartItems');
@@ -53,7 +55,7 @@ export const PaginationShoppingTable = () => {
         newData[index].orderQty += 1;
         setData(newData);
       } else {
-        console.log("no stock");
+        setErrorMessage('no stock');
       }
   };
 
@@ -72,9 +74,7 @@ export const PaginationShoppingTable = () => {
     setData(newData);
   }; 
 
-  const removeItem = (product) => {
-    console.log("removeItem");
-    console.log(cartItems);
+  const removeItem = (product) => { 
     const index = cartItems.findIndex(item => item.id === product.id);
     if (index !== -1) {
       const confirmation = window.confirm(`Are you sure you want to remove "${product.name}" from the cart?`);
@@ -84,14 +84,15 @@ export const PaginationShoppingTable = () => {
         setCartItems(updatedCartItems);
         setData(updatedCartItems);
         localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-        const message = `Item removed`;
-        console.log(message);
+        setErrorMessage('Item removed');
       }
     }
   };
 
   return (
     <>
+      <MessageBar message={errorMessage} />
+
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
