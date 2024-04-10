@@ -45,7 +45,14 @@ export const OrderColumns = [
   },
   {
     Header: 'Price',
-    accessor: 'totalPrice'
+    accessor: 'totalPrice',
+    Cell: ({ value }) => {
+      return parseFloat(value).toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+      });
+    }
   },
 ]
  

@@ -16,7 +16,14 @@ export const ShoppingColumns = [
   }, 
   {
     Header: 'Price',
-    accessor: 'price'
+    accessor: 'price',
+    Cell: ({ value }) => {
+      return parseFloat(value).toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+      });
+    }
   },
   {
     Header: 'Stock',
@@ -28,7 +35,15 @@ export const ShoppingColumns = [
   },
   {
     Header: 'Total',
-    accessor: 'total'
+    accessor: 'total',
+    Cell: ({ row }) => {
+      const totalPrice = row.values.orderQty * row.values.price;
+      return parseFloat(totalPrice).toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+      });
+    }
   },
   {
     Header: 'Delete',

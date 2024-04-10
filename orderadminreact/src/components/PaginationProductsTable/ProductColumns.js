@@ -16,7 +16,14 @@ export const ProductColumns = [
   }, 
   {
     Header: 'Price',
-    accessor: 'price'
+    accessor: 'price',
+    Cell: ({ value }) => {
+      return parseFloat(value).toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+      });
+    }
   },
   {
     Header: 'Stock',
