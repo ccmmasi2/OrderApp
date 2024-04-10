@@ -49,8 +49,15 @@ export const PaginationProductTable = ({ categoryId }) => {
 
   const handleIncrement = (index) => {
       const newData = [...data];
-      newData[index].orderQty += 1;
-      setData(newData);
+      const currentQty = newData[index].orderQty;
+      const stockQty = newData[index].stockQty;
+      
+      if (currentQty < stockQty) {
+        newData[index].orderQty += 1;
+        setData(newData);
+      } else {
+        console.log("No se puede superar el stockQty");
+      }
   };
 
   const handleDecrement = (index) => {
@@ -66,7 +73,7 @@ export const PaginationProductTable = ({ categoryId }) => {
     const newData = [...data];
     newData[index].orderQty = newValue;
     setData(newData);
-  };
+  }; 
 
   return (
     <>
@@ -97,7 +104,8 @@ export const PaginationProductTable = ({ categoryId }) => {
                   else if(cell.column.id === 'orderQty') {
                     return <td {...cell.getCellProps()}>
                               <button onClick={() => handleDecrement(row.index)} 
-                                      className="button">
+                                      className={`button ${row.original.orderQty === 0 ? 'error-border' : ''}`}
+                                      disabled={row.original.orderQty === 0}>
                                 <span className="label">-</span>
                               </button>
                               <input type="text" 
@@ -105,7 +113,8 @@ export const PaginationProductTable = ({ categoryId }) => {
                                       onChange={(e) => handleInputChange(e, row.index)}
                                       className="numberfield"  />
                               <button onClick={() => handleIncrement(row.index)} 
-                                      className="button">
+                                      className={`button ${row.original.orderQty > row.original.stockQty ? 'error-border' : ''}`}
+                                      disabled={row.original.orderQty > row.original.stockQty}>
                                 <span className="label">+</span>
                               </button>
                             </td>
