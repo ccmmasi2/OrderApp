@@ -1,18 +1,18 @@
 import React, { useState } from "react";
- import { useNavigate  } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 
-const HeaderForm = () => {
+const HeaderForm = ({selectedOption, handleOptionChange}) => {
+    const navigate = useNavigate ();
     
-    const [selectedOption, setSelectedOption] = useState('1');
-     const navigate = useNavigate ();
-
     const onHomeButtonClick = () => {
          navigate('/Home');
+         handleOptionChange('1');
     };
 
     const onOptionChange = (event) => {
         const selectedValue = event.target.value;
-    
+        handleOptionChange(selectedValue);
+
         if (selectedValue === '1') {
             navigate('/Home');
         } else if (selectedValue === '2') {
@@ -22,8 +22,6 @@ const HeaderForm = () => {
         } else if (selectedValue === '4') {
             navigate('/Order-List');
         }
-    
-        setSelectedOption(selectedValue);
     };
 
     return(

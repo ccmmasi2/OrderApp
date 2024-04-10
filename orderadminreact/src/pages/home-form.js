@@ -1,9 +1,9 @@
 import HeaderForm from './../components/layout/header/header-form';
 
-export default function Home() {
+export default function Home({selectedOption, handleOptionChange}) {
     return (
         <>
-            <HeaderForm />
+            <HeaderForm selectedOption={selectedOption} handleOptionChange={handleOptionChange} />
             <div className="separator"></div>
             <div className="matrix-info">
                 <div className="separator"></div>

@@ -3,7 +3,7 @@ import HeaderForm from './../components/layout/header/header-form';
 import { getCategories } from '../services/ApiConnectionService';
 import { PaginationProductTable } from '../components/PaginationProductsTable/PaginationProductsTable'
 
-export default function ProductList() {
+export default function ProductList({selectedOption, handleOptionChange}) {
     const [categories, setCategories] = useState([]);
     const [selectedCategoryId, setSelectedCategoryId] = useState(0); 
 
@@ -26,7 +26,7 @@ export default function ProductList() {
 
     return (
         <>
-            <HeaderForm />
+            <HeaderForm  selectedOption={selectedOption} handleOptionChange={handleOptionChange} />
             <div className="separator"></div>
             <div className="mat-app-backgroud basic-container">
                 <div className="contain-main">

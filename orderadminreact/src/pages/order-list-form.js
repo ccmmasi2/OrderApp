@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import HeaderForm from './../components/layout/header/header-form';
 import { PaginationOrdersTable } from '../components/PaginationOrdersTable/PaginationOrdersTable'
 
-export default function OrderList() {
+export default function OrderList({selectedOption, handleOptionChange}) {
     return (
         <>
-            <HeaderForm />
+            <HeaderForm selectedOption={selectedOption} handleOptionChange={handleOptionChange} />
             <div className="separator"></div>
             <div className="mat-app-backgroud basic-container">
                 <div className="contain-main">
