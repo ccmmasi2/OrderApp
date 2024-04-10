@@ -47,6 +47,27 @@ export const PaginationProductTable = ({ categoryId }) => {
 
   const { pageIndex, pageSize } = state;
 
+  const handleIncrement = (index) => {
+      const newData = [...data];
+      newData[index].orderQty += 1;
+      setData(newData);
+  };
+
+  const handleDecrement = (index) => {
+      const newData = [...data];
+      if (newData[index].orderQty > 0) {
+        newData[index].orderQty -= 1;
+        setData(newData);
+      }
+  };
+
+  const handleInputChange = (e, index) => {
+    const newValue = parseInt(e.target.value) || 0;
+    const newData = [...data];
+    newData[index].orderQty = newValue;
+    setData(newData);
+  };
+
   return (
     <>
       <table {...getTableProps()}>
@@ -65,7 +86,25 @@ export const PaginationProductTable = ({ categoryId }) => {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map(cell => {
-                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                  if(cell.column.id === 'orderQty') {
+                    return <td {...cell.getCellProps()}>
+                              <button onClick={() => handleDecrement(row.index)} 
+                                      className="button">
+                                <span className="label">-</span>
+                              </button>
+                              <input type="text" 
+                                      value={cell.value} 
+                                      onChange={(e) => handleInputChange(e, row.index)}
+                                      className="numberfield"  />
+                              <button onClick={() => handleIncrement(row.index)} 
+                                      className="button">
+                                <span className="label">+</span>
+                              </button>
+                            </td>
+                  }
+                  else {
+                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                  }
                 })}
               </tr>
             );
