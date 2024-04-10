@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { getIdentificationTypes } from '../../../services/ApiConnectionService';
 import { createOrder } from '../../../services/ApiConnectionService';
 import MessageBar from '../show-message/MessageBar';
+import { useNavigate  } from 'react-router-dom';
 
 const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
+  const navigate = useNavigate ();
+
   const [identificationTypeOptions, setIdentificationTypeOptions] = useState([]);
   const [selectIdentificationTypeId, setIdentificationTypeId] = useState(1); 
   const [inputIdentification, setIdentification] = useState('');
@@ -78,6 +81,9 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
 
         try {
           const response = await createOrder(orderRequest);
+          localStorage.removeItem('cartItems');
+          navigate('/Order-List');
+
           const infoMessage = `Order created successfully: "${response}"`;
           setMessage({ message: infoMessage, messageType: 'success' }); 
         } catch (error) {
