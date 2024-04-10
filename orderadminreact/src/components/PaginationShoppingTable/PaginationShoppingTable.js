@@ -10,16 +10,23 @@ export const PaginationShoppingTable = () => {
   const [data, setData] = useState([]);
   const [cartItems, setCartItems] = useState([]); 
   const [showMessage, setMessage] = useState('');
+  const [totalQty, setTotalQty] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem('cartItems');
     if (storedCartItems) {
       const parsedCartItems = JSON.parse(storedCartItems);
-      setCartItems(parsedCartItems);
       setData(parsedCartItems);
-    }  
+      setCartItems(parsedCartItems); 
+    } 
   }, []); 
 
+  useEffect(() => {
+    getTotalQty();
+    getTotalPrice(); 
+  }, [cartItems]);
+  
   const {
     getTableProps,
     getTableBodyProps,
@@ -54,6 +61,9 @@ export const PaginationShoppingTable = () => {
       if (currentQty < stockQty) {
         newData[index].orderQty += 1;
         setData(newData);
+        setCartItems(newData);
+        getTotalQty();
+        getTotalPrice();
       } else {
         setMessage({ message: 'no stock', messageType: 'warning' }); 
       }
@@ -64,6 +74,9 @@ export const PaginationShoppingTable = () => {
       if (newData[index].orderQty > 0) {
         newData[index].orderQty -= 1;
         setData(newData);
+        setCartItems(newData);
+        getTotalQty();
+        getTotalPrice();
       }
   };
 
@@ -83,11 +96,29 @@ export const PaginationShoppingTable = () => {
         updatedCartItems.splice(index, 1);
         setCartItems(updatedCartItems);
         setData(updatedCartItems);
+        getTotalQty();
+        getTotalPrice();
         localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
         setMessage({ message: 'Item removed', messageType: 'success' }); 
       }
     }
   };
+
+  const getTotalQty = () => { 
+    let _totalQty = 0;
+    for (const item of cartItems) {
+      _totalQty += item.orderQty;
+    }
+    setTotalQty(_totalQty);
+  }; 
+
+  const getTotalPrice = () => { 
+    let _totalPrice = 0;
+    for (const item of cartItems) {
+      _totalPrice += item.price * item.orderQty;
+    }
+    setTotalPrice(_totalPrice);
+  }; 
 
   return (
     <>
@@ -191,6 +222,15 @@ export const PaginationShoppingTable = () => {
             </option>
           ))}
         </select>
+      </div>
+      <br></br>
+      <div className="separator"></div>
+      <div className="Totals">
+        <div>Total Qty: {totalQty} </div>
+        <div>Total: {totalPrice} </div>
+        <button className="button">
+          Create order
+        </button> 
       </div>
     </>
   )
