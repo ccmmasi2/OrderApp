@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getIdentificationTypes } from '../../../services/ApiConnectionService';
+import { createOrder } from '../../../services/ApiConnectionService';
 
 const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
   const [identificationTypeOptions, setIdentificationTypeOptions] = useState([]);
@@ -45,9 +46,7 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
     return age >= 18;
   }; 
 
-  const submitForm = (event) => {
-    event.preventDefault();
-
+  const submitForm = async (event) => {
     if (
       inputIdentification &&
       inputName &&
@@ -73,14 +72,19 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
           products: cartItems,
           shippingAddress: inputShippingAddress
         };
-  
-        console.log("orderRequest");
-        console.log(orderRequest);
+
+        try {
+          const response = await createOrder(orderRequest);
+          console.log("Order created successfully:", response);
+        } catch (error) {
+          console.error("An error occurred while creating the order:", error);
+          alert("An error occurred while creating the order. Please try again later.");
+        }
       }
     } else {
+      // Lógica para manejar el caso en el que no se completan todos los campos del formulario
     }
   };
-  
 
   return (
     <div className="basic-container">
