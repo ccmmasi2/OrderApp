@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getIdentificationTypes } from '../../../services/ApiConnectionService';
 import { createOrder } from '../../../services/ApiConnectionService';
+import MessageBar from '../show-message/MessageBar';
 
 const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
   const [identificationTypeOptions, setIdentificationTypeOptions] = useState([]);
@@ -12,6 +13,7 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
   const [inputEmail, setEmail] = useState('');
   const [inputPhoneNumber, setPhoneNumber] = useState('');
   const [inputShippingAddress, setShippingAddress] = useState('');
+  const [showMessage, setMessage] = useState('');
  
   useEffect(() => {
       const fetchData = async () => {
@@ -56,7 +58,8 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
       inputShippingAddress
     ) {
       if (!validateAge(inputBirthDay)) {
-        alert('The customer must be over than 18 years old');
+        const errorMessage = `The customer must be over than 18 years old`;
+        setMessage({ message: errorMessage, messageType: 'error' }); 
         return;
       } else {
         const orderRequest = {
@@ -75,169 +78,175 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
 
         try {
           const response = await createOrder(orderRequest);
-          console.log("Order created successfully:", response);
+          const infoMessage = `Order created successfully: "${response}"`;
+          setMessage({ message: infoMessage, messageType: 'success' }); 
         } catch (error) {
-          console.error("An error occurred while creating the order:", error);
-          alert("An error occurred while creating the order. Please try again later.");
+          const errorMessage = `An error occurred while creating the order. Please try again later.`;
+          setMessage({ message: errorMessage, messageType: 'error' }); 
         }
       }
     } else {
-      // Lógica para manejar el caso en el que no se completan todos los campos del formulario
+      const errorMessage = `Please check all fields.`;
+      setMessage({ message: errorMessage, messageType: 'warning' }); 
     }
   };
 
   return (
-    <div className="basic-container">
-      <div className="contain-main">
-        <div className="contain-head">
-          <div className="contain-title">Generate order</div>
-        </div>
-        <div className="contain-body">
-          <div className="contain-table">
-            <div className="form-container">
-              <h2>Customer information</h2>
-              <form onSubmit={(event) => submitForm(event)}>
-                
-                <div className="form-group">
-                  <label className="labelText" htmlFor="selectIdentificationTypes">
-                    Identification type:
-                  </label>
-                  <div className="select-container-intern">
-                    <div className="select-container">
-                      <select onChange={handleIdentificationTypeChange}>
-                          {identificationTypeOptions.map((item) => (
-                            <option key={item.id} value={item.id}>{item.name}</option>
-                          ))}
-                      </select>
+    <>
+      <MessageBar message={showMessage.message} messageType={showMessage.messageType} />
+
+      <div className="basic-container">
+        <div className="contain-main">
+          <div className="contain-head">
+            <div className="contain-title">Generate order</div>
+          </div>
+          <div className="contain-body">
+            <div className="contain-table">
+              <div className="form-container">
+                <h2>Customer information</h2>
+                <form onSubmit={(event) => submitForm(event)}>
+                  
+                  <div className="form-group">
+                    <label className="labelText" htmlFor="selectIdentificationTypes">
+                      Identification type:
+                    </label>
+                    <div className="select-container-intern">
+                      <div className="select-container">
+                        <select onChange={handleIdentificationTypeChange}>
+                            {identificationTypeOptions.map((item) => (
+                              <option key={item.id} value={item.id}>{item.name}</option>
+                            ))}
+                        </select>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="form-group">
-                  <label className="labelText" htmlFor="inputIdentification">
-                    Identification:
-                  </label>
-                  <input
-                    className="inputText"
-                    type="number"
-                    id="inputIdentification"
-                    name="inputIdentification"
-                    value={inputIdentification}
-                    onChange={(e) => setIdentification(e.target.value)}
-                    maxLength="10"
-                    required
-                  />
-                </div>
+                  <div className="form-group">
+                    <label className="labelText" htmlFor="inputIdentification">
+                      Identification:
+                    </label>
+                    <input
+                      className="inputText"
+                      type="number"
+                      id="inputIdentification"
+                      name="inputIdentification"
+                      value={inputIdentification}
+                      onChange={(e) => setIdentification(e.target.value)}
+                      maxLength="10"
+                      required
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label className="labelText" htmlFor="inputName">
-                    Name:
-                  </label>
-                  <input
-                    className="inputText"
-                    type="text"
-                    id="inputName"
-                    name="inputName"
-                    value={inputName}
-                    onChange={(e) => setName(e.target.value)}
-                    maxLength="50"
-                    required
-                  />
-                </div>
+                  <div className="form-group">
+                    <label className="labelText" htmlFor="inputName">
+                      Name:
+                    </label>
+                    <input
+                      className="inputText"
+                      type="text"
+                      id="inputName"
+                      name="inputName"
+                      value={inputName}
+                      onChange={(e) => setName(e.target.value)}
+                      maxLength="50"
+                      required
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label className="labelText" htmlFor="inputLastName">
-                    Last name:
-                  </label>
-                  <input
-                    className="inputText"
-                    type="text"
-                    id="inputLastName"
-                    name="inputLastName"
-                    value={inputLastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    maxLength="50"
-                    required
-                  />
-                </div>
+                  <div className="form-group">
+                    <label className="labelText" htmlFor="inputLastName">
+                      Last name:
+                    </label>
+                    <input
+                      className="inputText"
+                      type="text"
+                      id="inputLastName"
+                      name="inputLastName"
+                      value={inputLastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      maxLength="50"
+                      required
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label className="labelText" htmlFor="inputBirthDay">
-                    Birthday:
-                  </label>
-                  <input
-                    className="inputText"
-                    type="date"
-                    id="inputBirthDay"
-                    name="inputBirthDay"
-                    value={inputBirthDay}
-                    onChange={(e) => setBirthDay(e.target.value)}
-                    required
-                  />
-                </div>
+                  <div className="form-group">
+                    <label className="labelText" htmlFor="inputBirthDay">
+                      Birthday:
+                    </label>
+                    <input
+                      className="inputText"
+                      type="date"
+                      id="inputBirthDay"
+                      name="inputBirthDay"
+                      value={inputBirthDay}
+                      onChange={(e) => setBirthDay(e.target.value)}
+                      required
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label className="labelText" htmlFor="inputEmail">
-                    Email:
-                  </label>
-                  <input
-                    className="inputText"
-                    type="text"
-                    id="inputEmail"
-                    name="inputEmail"
-                    value={inputEmail}
-                    onChange={(e) => setEmail(e.target.value)}
-                    maxLength="100"
-                    required
-                  />
-                </div>
+                  <div className="form-group">
+                    <label className="labelText" htmlFor="inputEmail">
+                      Email:
+                    </label>
+                    <input
+                      className="inputText"
+                      type="text"
+                      id="inputEmail"
+                      name="inputEmail"
+                      value={inputEmail}
+                      onChange={(e) => setEmail(e.target.value)}
+                      maxLength="100"
+                      required
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label className="labelText" htmlFor="inputPhoneNumber">
-                    Phone number:
-                  </label>
-                  <input
-                    className="inputText"
-                    type="text"
-                    id="inputPhoneNumber"
-                    name="inputPhoneNumber"
-                    value={inputPhoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    maxLength="50"
-                  />
-                </div>
+                  <div className="form-group">
+                    <label className="labelText" htmlFor="inputPhoneNumber">
+                      Phone number:
+                    </label>
+                    <input
+                      className="inputText"
+                      type="text"
+                      id="inputPhoneNumber"
+                      name="inputPhoneNumber"
+                      value={inputPhoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      maxLength="50"
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label className="labelText" htmlFor="inputShippingAddress">
-                    Shipping address:
-                  </label>
-                  <input
-                    className="inputText"
-                    type="text"
-                    id="inputShippingAddress"
-                    name="inputShippingAddress"
-                    value={inputShippingAddress}
-                    onChange={(e) => setShippingAddress(e.target.value)}
-                    required
-                  />
-                </div>
+                  <div className="form-group">
+                    <label className="labelText" htmlFor="inputShippingAddress">
+                      Shipping address:
+                    </label>
+                    <input
+                      className="inputText"
+                      type="text"
+                      id="inputShippingAddress"
+                      name="inputShippingAddress"
+                      value={inputShippingAddress}
+                      onChange={(e) => setShippingAddress(e.target.value)}
+                      required
+                    />
+                  </div>
 
-                <div className="totals-container">
-                  <div>Total Qty: {totalQty}</div>
-                  <div>Total: {totalSum}</div>
-                </div>
+                  <div className="totals-container">
+                    <div>Total Qty: {totalQty}</div>
+                    <div>Total: {totalSum}</div>
+                  </div>
 
-                <button className="button" type="submit">
-                  Submit
-                </button>
+                  <button className="button" type="submit">
+                    Submit
+                  </button>
 
-              </form>
+                </form>
+              </div>
             </div>
+            <div className="separator"></div>
           </div>
-          <div className="separator"></div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
