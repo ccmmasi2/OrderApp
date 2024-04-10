@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:5143';
 const urlGetCategories = '/api/Category/GetCategories';
-const urlGetIdentificationTypes = '/api/Category/GetCategories';
+const urlGetIdentificationTypes = '/api/IdentificationType/GetIdentificationTypes';
 const urlGetOrdersInformation = '/api/OrderHdr/GetOrdersInformation';
 const urlGetProductsByCategoryId = '/api/Product/GetProductsByCategoryIdNoPag';
 const urlCreateOrder = '/api/OrderHdr/AddOrderRequest';

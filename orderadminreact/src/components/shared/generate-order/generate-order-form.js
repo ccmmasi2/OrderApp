@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { getIdentificationTypes } from '../../../services/ApiConnectionService';
 
 const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
   const [identificationTypeOptions, setIdentificationTypeOptions] = useState([]);
-  const [selectIdentificationTypeId, setSelectIdentificationTypeId] = useState(0);
   const [identification, setIdentification] = useState('');
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -10,20 +10,21 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [shippingAddress, setShippingAddress] = useState('');
-
+ 
   useEffect(() => {
-    // Simulate fetching identification type options from API
-    const fakeIdentificationTypeOptions = [
-      { id: 1, name: 'Option 1' },
-      { id: 2, name: 'Option 2' },
-      { id: 3, name: 'Option 3' },
-    ];
-    setIdentificationTypeOptions(fakeIdentificationTypeOptions);
-  }, []);
+      const fetchData = async () => {
+          try {
+              const data = await getIdentificationTypes();
+              setIdentificationTypeOptions(data);
+          } catch (error) {
+              console.log(error);
+          }
+      };
+      fetchData();
+  }, []); 
 
   const validateAge = (birthDay) => {
-    // Implement age validation logic
-    return true; // Placeholder, replace with actual logic
+    return true;  
   };
 
   const submitForm = () => {
@@ -32,9 +33,7 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
       return;
     }
 
-    // Implement submit logic
     alert('Form submitted');
-    // history.push('/Order/catalog'); // Uncomment this line to redirect to catalog page after submitting
   };
 
   return (
@@ -56,18 +55,10 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
                   </label>
                   <div className="select-container-intern">
                     <div className="select-container">
-                      <select
-                        id="selectIdentificationTypes"
-                        name="selectIdentificationTypes"
-                        value={selectIdentificationTypeId}
-                        onChange={(e) => setSelectIdentificationTypeId(e.target.value)}
-                        required
-                      >
-                        {identificationTypeOptions.map((option) => (
-                          <option key={option.id} value={option.id}>
-                            {option.name}
-                          </option>
-                        ))}
+                      <select>
+                          {identificationTypeOptions.map((item) => (
+                            <option key={item.id} value={item.id}>{item.name}</option>
+                          ))}
                       </select>
                     </div>
                   </div>
