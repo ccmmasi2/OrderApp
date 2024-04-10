@@ -15,7 +15,8 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems, closeModal }) => {
   const [inputPhoneNumber, setPhoneNumber] = useState('');
   const [inputShippingAddress, setShippingAddress] = useState('');
   const [showMessage, setMessage] = useState('');
- 
+  const [submitDisabled, setSubmitDisabled] = useState(false); 
+
   useEffect(() => {
       const fetchData = async () => {
           try {
@@ -51,6 +52,7 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems, closeModal }) => {
 
   const submitForm = async (event) => {
     event.preventDefault();
+    setSubmitDisabled(true);
 
     if (
       inputIdentification &&
@@ -63,6 +65,7 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems, closeModal }) => {
       if (!validateAge(inputBirthDay)) {
         const errorMessage = `The customer must be over than 18 years old`;
         setMessage({ message: errorMessage, messageType: 'error' }); 
+        setSubmitDisabled(false);
         return;
       } else {
         const orderRequest = {
@@ -81,18 +84,31 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems, closeModal }) => {
 
         try {
           const response = await createOrder(orderRequest);
-
-          localStorage.removeItem('cartItems');
-
-          closeModal();
+          
+          if (response) {
+            const infoMessage = 'Order created successfully';
+            setMessage({ message: infoMessage, messageType: 'success' });
+        
+            localStorage.removeItem('cartItems');
+        
+            setTimeout(() => {
+              closeModal();
+            }, 3000);
+          } else {
+            const errorMessage = 'Error creating the Order';
+            setMessage({ message: errorMessage, messageType: 'error' });
+            setSubmitDisabled(false);
+          }
         } catch (error) {
           const errorMessage = `An error occurred while creating the order. Please try again later.`;
-          setMessage({ message: errorMessage, messageType: 'error' }); 
+          setMessage({ message: errorMessage, messageType: 'error' });
+          setSubmitDisabled(false); 
         }
       }
     } else {
       const errorMessage = `Please check all fields.`;
       setMessage({ message: errorMessage, messageType: 'warning' }); 
+      setSubmitDisabled(false);
     }
   };
 
@@ -240,7 +256,7 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems, closeModal }) => {
                     <div>Total: {totalSum}</div>
                   </div>
 
-                  <button className="button" type='submit' >
+                  <button className="button" type='submit' disabled={submitDisabled} >
                     Submit
                   </button>
 

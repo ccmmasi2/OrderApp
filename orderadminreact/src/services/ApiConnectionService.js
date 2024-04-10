@@ -56,7 +56,7 @@ export const createOrder = async (orderRequest) => {
     });
 
     const responseData = await response.json();
-    return responseData.data;  
+    return responseData;  
   } catch (error) {
     console.error('Error creating order:', error);
     throw error;  
