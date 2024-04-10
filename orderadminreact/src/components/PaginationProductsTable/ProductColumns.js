@@ -11,7 +11,7 @@ export const ProductColumns = [
   },
   {
     Header: 'Description',
-    accessor: 'description',
+    accessor: 'truncatedDescription',
     sticky: 'left'
   }, 
   {

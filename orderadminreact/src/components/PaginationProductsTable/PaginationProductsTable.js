@@ -86,7 +86,15 @@ export const PaginationProductTable = ({ categoryId }) => {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map(cell => {
-                  if(cell.column.id === 'orderQty') {
+                  if(cell.column.id === 'truncatedDescription') {
+                    console.log(row.original.description);
+                    return (
+                      <td {...cell.getCellProps()} title={row.original.description}>
+                        {cell.render('Cell')}
+                      </td>
+                    );
+                  } 
+                  else if(cell.column.id === 'orderQty') {
                     return <td {...cell.getCellProps()}>
                               <button onClick={() => handleDecrement(row.index)} 
                                       className="button">

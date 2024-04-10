@@ -29,7 +29,14 @@ export const getProductsByCategoryId = async (categoryId) => {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    return data;
+    
+    const newData = data.map(product => ({
+      ...product,
+      truncatedDescription: product.description.substring(0, 50) + '...'
+    }));
+
+    return newData;
+
   } catch (error) {
     console.error('Error getting Products by Category Id:', error);
     throw error;  
