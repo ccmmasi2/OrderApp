@@ -9,7 +9,7 @@ export const PaginationShoppingTable = () => {
   const columns = useMemo(() => ShoppingColumns, []);
   const [data, setData] = useState([]);
   const [cartItems, setCartItems] = useState([]); 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [showMessage, setMessage] = useState('');
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem('cartItems');
@@ -55,7 +55,7 @@ export const PaginationShoppingTable = () => {
         newData[index].orderQty += 1;
         setData(newData);
       } else {
-        setErrorMessage('no stock');
+        setMessage({ message: 'no stock', messageType: 'warning' }); 
       }
   };
 
@@ -84,14 +84,14 @@ export const PaginationShoppingTable = () => {
         setCartItems(updatedCartItems);
         setData(updatedCartItems);
         localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-        setErrorMessage('Item removed');
+        setMessage({ message: 'Item removed', messageType: 'success' }); 
       }
     }
   };
 
   return (
     <>
-      <MessageBar message={errorMessage} />
+      <MessageBar message={showMessage.message} messageType={showMessage.messageType} />
 
       <table {...getTableProps()}>
         <thead>

@@ -196,7 +196,6 @@ a:hover {
   background-color: #cfbfbf; 
 }
 
-
 /*alert*/.alert {
   padding: 20px;
   margin-bottom: 15px;
@@ -282,3 +281,4 @@ a:hover {
 .inputText.required:invalid {
   border-color: red;
 }
+ 

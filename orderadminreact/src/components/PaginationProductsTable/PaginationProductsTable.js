@@ -10,7 +10,7 @@ export const PaginationProductTable = ({ categoryId }) => {
   const columns = useMemo(() => ProductColumns, []);
   const [data, setData] = useState([]);
   const [cartItems, setCartItems] = useState([]); 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [showMessage, setMessage] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,8 +18,8 @@ export const PaginationProductTable = ({ categoryId }) => {
         const productsData = await getProductsByCategoryId(categoryId);
         setData(productsData);
       } catch (error) {
-        const message = `Error fetching products: "${error}"`;
-        setErrorMessage(message);
+        const errorMessage = `Error fetching products: "${error}"`;
+        setMessage({ message: errorMessage, messageType: 'error' }); 
       }
     };
 
@@ -61,7 +61,7 @@ export const PaginationProductTable = ({ categoryId }) => {
         newData[index].orderQty += 1;
         setData(newData);
       } else {
-        setErrorMessage('No stock');
+        setMessage({ message: 'No stock', messageType: 'warning' }); 
       }
   };
 
@@ -82,30 +82,30 @@ export const PaginationProductTable = ({ categoryId }) => {
 
   const addToCart = (product) => {
     if (product.orderQty > 0 && product.orderQty <= product.stockQty) {
-      const existingProductIndex = cartItems.findIndex(item => item.id === product.id);
+        const existingProductIndex = cartItems.findIndex(item => item.id === product.id);
+    
+        if (existingProductIndex !== -1) {
+          const updatedCartItems = [...cartItems];
+          updatedCartItems[existingProductIndex].orderQty = product.orderQty;
+          setCartItems(updatedCartItems);
+          localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+        } else {
+          const productToAdd = { ...product };
+          const updatedCartItems = [...cartItems, productToAdd];
+          setCartItems(updatedCartItems);
+          localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); 
+        }
   
-      if (existingProductIndex !== -1) {
-        const updatedCartItems = [...cartItems];
-        updatedCartItems[existingProductIndex].orderQty = product.orderQty;
-        setCartItems(updatedCartItems);
-        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+        const infoMessage = `Product "${product.name}" - "${product.productCode}" with amount "${product.orderQty}" added to Cart`;
+        setMessage({ message: infoMessage, messageType: 'success' }); 
       } else {
-        const productToAdd = { ...product };
-        const updatedCartItems = [...cartItems, productToAdd];
-        setCartItems(updatedCartItems);
-        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); 
-      }
-  
-      const message = `Product "${product.name}" - "${product.productCode}" with amount "${product.orderQty}" added to Cart`;
-      setErrorMessage(message);
-    } else {
-      setErrorMessage('Invalid amount');
+        setMessage({ message: 'Invalid amount', messageType: 'error' }); 
     }
   };
 
   return (
     <>
-      <MessageBar message={errorMessage} />
+      <MessageBar message={showMessage.message} messageType={showMessage.messageType} />
 
       <table {...getTableProps()}>
         <thead>
