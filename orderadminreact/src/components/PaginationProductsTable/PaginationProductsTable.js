@@ -85,13 +85,13 @@ export const PaginationProductTable = ({ categoryId }) => {
         const updatedCartItems = [...cartItems];
         updatedCartItems[existingProductIndex].orderQty = product.orderQty;
         setCartItems(updatedCartItems);
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
       } else {
         const productToAdd = { ...product };
         const updatedCartItems = [...cartItems, productToAdd];
         setCartItems(updatedCartItems);
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); 
       }
-  
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
   
       const message = `Product "${product.name}" - "${product.productCode}" with amount "${product.orderQty}" added to Cart`;
       console.log(message);
