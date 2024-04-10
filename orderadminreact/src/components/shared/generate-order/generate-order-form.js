@@ -3,13 +3,14 @@ import { getIdentificationTypes } from '../../../services/ApiConnectionService';
 
 const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
   const [identificationTypeOptions, setIdentificationTypeOptions] = useState([]);
-  const [identification, setIdentification] = useState('');
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [birthDay, setBirthDay] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [shippingAddress, setShippingAddress] = useState('');
+  const [selectIdentificationTypeId, setIdentificationTypeId] = useState(0); 
+  const [inputIdentification, setIdentification] = useState('');
+  const [inputName, setName] = useState('');
+  const [inputLastName, setLastName] = useState('');
+  const [inputBirthDay, setBirthDay] = useState('');
+  const [inputEmail, setEmail] = useState('');
+  const [inputPhoneNumber, setPhoneNumber] = useState('');
+  const [inputShippingAddress, setShippingAddress] = useState('');
  
   useEffect(() => {
       const fetchData = async () => {
@@ -23,18 +24,63 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
       fetchData();
   }, []); 
 
+  const handleIdentificationTypeChange = (event) => {
+    const categoryId = parseInt(event.target.value);
+    setIdentificationTypeId(categoryId);
+  };
+
   const validateAge = (birthDay) => {
-    return true;  
-  };
-
-  const submitForm = () => {
-    if (!validateAge(birthDay)) {
-      alert('The customer must be over than 18 years old');
-      return;
+    if (typeof birthDay === 'string') {
+      birthDay = new Date(birthDay);
     }
-
-    alert('Form submitted');
+  
+    if (!(birthDay instanceof Date) || isNaN(birthDay.getTime())) {
+      return false;
+    }
+  
+    const currentDate = new Date();
+    const diff = currentDate.getTime() - birthDay.getTime();
+    const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+  
+    return age >= 18;
   };
+   
+  const submitForm = () => {
+    if (
+      inputIdentification &&
+      inputName &&
+      inputLastName &&
+      inputBirthDay &&
+      inputEmail &&
+      inputShippingAddress
+    ) {
+      if (!validateAge(inputBirthDay)) {
+        alert('The customer must be over than 18 years old');
+        return;
+      } else {
+        const orderRequest = {
+          customer: {
+            name: inputName,
+            lastName: inputLastName,
+            identificationTypeId: selectIdentificationTypeId,
+            identification: inputIdentification,
+            birthDay: inputBirthDay,
+            email: inputEmail,
+            phoneNumber: inputPhoneNumber
+          },
+          products: cartItems,
+          shippingAddress: inputShippingAddress
+        };
+  
+        console.log("orderRequest");
+        console.log(orderRequest);
+        alert('Order created successfully');
+      }
+    } else {
+      alert('Please fill in all required fields');
+    }
+  };
+  
 
   return (
     <div className="basic-container">
@@ -48,14 +94,13 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
               <h2>Customer information</h2>
               <form onSubmit={submitForm}>
                 
-                
-              <div className="form-group">
+                <div className="form-group">
                   <label className="labelText" htmlFor="selectIdentificationTypes">
                     Identification type:
                   </label>
                   <div className="select-container-intern">
                     <div className="select-container">
-                      <select>
+                      <select onChange={handleIdentificationTypeChange}>
                           {identificationTypeOptions.map((item) => (
                             <option key={item.id} value={item.id}>{item.name}</option>
                           ))}
@@ -65,15 +110,15 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="labelText" htmlFor="identification">
+                  <label className="labelText" htmlFor="inputIdentification">
                     Identification:
                   </label>
                   <input
                     className="inputText"
                     type="number"
-                    id="identification"
-                    name="identification"
-                    value={identification}
+                    id="inputIdentification"
+                    name="inputIdentification"
+                    value={inputIdentification}
                     onChange={(e) => setIdentification(e.target.value)}
                     maxLength="10"
                     required
@@ -81,15 +126,15 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="labelText" htmlFor="name">
+                  <label className="labelText" htmlFor="inputName">
                     Name:
                   </label>
                   <input
                     className="inputText"
                     type="text"
-                    id="name"
-                    name="name"
-                    value={name}
+                    id="inputName"
+                    name="inputName"
+                    value={inputName}
                     onChange={(e) => setName(e.target.value)}
                     maxLength="50"
                     required
@@ -97,15 +142,15 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="labelText" htmlFor="lastName">
+                  <label className="labelText" htmlFor="inputLastName">
                     Last name:
                   </label>
                   <input
                     className="inputText"
                     type="text"
-                    id="lastName"
-                    name="lastName"
-                    value={lastName}
+                    id="inputLastName"
+                    name="inputLastName"
+                    value={inputLastName}
                     onChange={(e) => setLastName(e.target.value)}
                     maxLength="50"
                     required
@@ -113,30 +158,30 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="labelText" htmlFor="birthDay">
+                  <label className="labelText" htmlFor="inputBirthDay">
                     Birthday:
                   </label>
                   <input
                     className="inputText"
                     type="date"
-                    id="birthDay"
-                    name="birthDay"
-                    value={birthDay}
+                    id="inputBirthDay"
+                    name="inputBirthDay"
+                    value={inputBirthDay}
                     onChange={(e) => setBirthDay(e.target.value)}
                     required
                   />
                 </div>
 
                 <div className="form-group">
-                  <label className="labelText" htmlFor="email">
+                  <label className="labelText" htmlFor="inputEmail">
                     Email:
                   </label>
                   <input
                     className="inputText"
                     type="text"
-                    id="email"
-                    name="email"
-                    value={email}
+                    id="inputEmail"
+                    name="inputEmail"
+                    value={inputEmail}
                     onChange={(e) => setEmail(e.target.value)}
                     maxLength="100"
                     required
@@ -144,30 +189,30 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="labelText" htmlFor="phoneNumber">
+                  <label className="labelText" htmlFor="inputPhoneNumber">
                     Phone number:
                   </label>
                   <input
                     className="inputText"
                     type="text"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    value={phoneNumber}
+                    id="inputPhoneNumber"
+                    name="inputPhoneNumber"
+                    value={inputPhoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     maxLength="50"
                   />
                 </div>
 
                 <div className="form-group">
-                  <label className="labelText" htmlFor="shippingAddress">
+                  <label className="labelText" htmlFor="inputShippingAddress">
                     Shipping address:
                   </label>
                   <input
                     className="inputText"
                     type="text"
-                    id="shippingAddress"
-                    name="shippingAddress"
-                    value={shippingAddress}
+                    id="inputShippingAddress"
+                    name="inputShippingAddress"
+                    value={inputShippingAddress}
                     onChange={(e) => setShippingAddress(e.target.value)}
                     required
                   />
