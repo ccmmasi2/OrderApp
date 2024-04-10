@@ -3,7 +3,7 @@ import { getIdentificationTypes } from '../../../services/ApiConnectionService';
 
 const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
   const [identificationTypeOptions, setIdentificationTypeOptions] = useState([]);
-  const [selectIdentificationTypeId, setIdentificationTypeId] = useState(0); 
+  const [selectIdentificationTypeId, setIdentificationTypeId] = useState(1); 
   const [inputIdentification, setIdentification] = useState('');
   const [inputName, setName] = useState('');
   const [inputLastName, setLastName] = useState('');
@@ -43,9 +43,11 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
     const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
   
     return age >= 18;
-  };
-   
-  const submitForm = () => {
+  }; 
+
+  const submitForm = (event) => {
+    event.preventDefault();
+
     if (
       inputIdentification &&
       inputName &&
@@ -74,10 +76,8 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
   
         console.log("orderRequest");
         console.log(orderRequest);
-        alert('Order created successfully');
       }
     } else {
-      alert('Please fill in all required fields');
     }
   };
   
@@ -92,7 +92,7 @@ const GenerateOrder = ({ totalQty, totalSum, cartItems }) => {
           <div className="contain-table">
             <div className="form-container">
               <h2>Customer information</h2>
-              <form onSubmit={submitForm}>
+              <form onSubmit={(event) => submitForm(event)}>
                 
                 <div className="form-group">
                   <label className="labelText" htmlFor="selectIdentificationTypes">
