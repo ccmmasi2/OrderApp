@@ -10,20 +10,13 @@ export const PaginationShoppingTable = () => {
   const [cartItems, setCartItems] = useState([]); 
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const storedCartItems = localStorage.getItem('cartItems');
-        if (storedCartItems) {
-          const cartItems = JSON.parse(storedCartItems);
-          setData(cartItems);
-        }
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+    const storedCartItems = localStorage.getItem('cartItems');
+    if (storedCartItems) {
+      const parsedCartItems = JSON.parse(storedCartItems);
+      setCartItems(parsedCartItems);
+      setData(parsedCartItems);
+    }  
+  }, []); 
 
   const {
     getTableProps,
@@ -80,6 +73,8 @@ export const PaginationShoppingTable = () => {
   }; 
 
   const removeItem = (product) => {
+    console.log("removeItem");
+    console.log(cartItems);
     const index = cartItems.findIndex(item => item.id === product.id);
     if (index !== -1) {
       const confirmation = window.confirm(`Are you sure you want to remove "${product.name}" from the cart?`);
@@ -87,6 +82,7 @@ export const PaginationShoppingTable = () => {
         const updatedCartItems = [...cartItems];
         updatedCartItems.splice(index, 1);
         setCartItems(updatedCartItems);
+        setData(updatedCartItems);
         localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
         const message = `Item removed`;
         console.log(message);
