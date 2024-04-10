@@ -3,6 +3,7 @@ import { useTable, usePagination } from 'react-table'
 import { ProductColumns } from './ProductColumns'
 import '../../table.css';
 import { getProductsByCategoryId } from '../../services/ApiConnectionService';
+import { FaShoppingCart } from 'react-icons/fa';  
 
 export const PaginationProductTable = ({ categoryId }) => {
   const columns = useMemo(() => ProductColumns, []);
@@ -116,6 +117,15 @@ export const PaginationProductTable = ({ categoryId }) => {
                                       className={`button ${row.original.orderQty > row.original.stockQty ? 'error-border' : ''}`}
                                       disabled={row.original.orderQty > row.original.stockQty}>
                                 <span className="label">+</span>
+                              </button>
+                            </td>
+                  }
+                  else if(cell.column.id === 'addToCart') {
+                    return <td {...cell.getCellProps()}>
+                              <button  
+                                      className={`button ${row.original.orderQty === 0 || row.original.orderQty > row.original.stockQty ? 'error-border' : ''}`}
+                                      disabled={row.original.orderQty === 0 || row.original.orderQty > row.original.stockQty}>
+                                <FaShoppingCart size={20} />
                               </button>
                             </td>
                   }
