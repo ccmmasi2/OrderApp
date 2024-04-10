@@ -8,6 +8,7 @@ import { FaShoppingCart } from 'react-icons/fa';
 export const PaginationProductTable = ({ categoryId }) => {
   const columns = useMemo(() => ProductColumns, []);
   const [data, setData] = useState([]);
+  const [cartItems, setCartItems] = useState([]); 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,6 +77,29 @@ export const PaginationProductTable = ({ categoryId }) => {
     setData(newData);
   }; 
 
+  const addToCart = (product) => {
+    if (product.orderQty > 0 && product.orderQty <= product.stockQty) {
+      const existingProductIndex = cartItems.findIndex(item => item.id === product.id);
+  
+      if (existingProductIndex !== -1) {
+        const updatedCartItems = [...cartItems];
+        updatedCartItems[existingProductIndex].orderQty = product.orderQty;
+        setCartItems(updatedCartItems);
+      } else {
+        const productToAdd = { ...product };
+        const updatedCartItems = [...cartItems, productToAdd];
+        setCartItems(updatedCartItems);
+      }
+  
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  
+      const message = `Product "${product.name}" - "${product.productCode}" with amount "${product.orderQty}" added to Cart`;
+      console.log(message);
+    } else {
+      console.log("Invalid amount");
+    }
+  };
+
   return (
     <>
       <table {...getTableProps()}>
@@ -123,9 +147,10 @@ export const PaginationProductTable = ({ categoryId }) => {
                   else if(cell.column.id === 'addToCart') {
                     return <td {...cell.getCellProps()}>
                               <button  
-                                      className={`button ${row.original.orderQty === 0 || row.original.orderQty > row.original.stockQty ? 'error-border' : ''}`}
-                                      disabled={row.original.orderQty === 0 || row.original.orderQty > row.original.stockQty}>
-                                <FaShoppingCart size={20} />
+                                className={`button ${row.original.orderQty === 0 || row.original.orderQty > row.original.stockQty ? 'error-border' : ''}`}
+                                disabled={row.original.orderQty === 0 || row.original.orderQty > row.original.stockQty}>
+                                <FaShoppingCart size={20}
+                                onClick={() => addToCart(row.original)} />
                               </button>
                             </td>
                   }
