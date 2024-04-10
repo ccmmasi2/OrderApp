@@ -4,7 +4,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ProductDTO } from '@app/models/product.model';
 import { GenerateOrderComponent } from '@app/modules/shared/generate-order/generate-order.component';
 import { AlertService } from '@app/services/alert-service.service';
-import { ApiConnectionService } from '@app/services/api-connection.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -28,7 +27,6 @@ export class ShoppingCartComponent implements OnInit {
   dataSource: any;
 
   constructor(
-    public apiConnectionService: ApiConnectionService,
     private dialog: MatDialog,
     private alertService: AlertService
   ) { }

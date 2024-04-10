@@ -1,27 +1,29 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useTable, usePagination } from 'react-table'
-import { ProductColumns } from './ProductColumns'
+import { ShoppingColumns } from './ShoppingColumns'
 import '../../table.css';
-import { getProductsByCategoryId } from '../../services/ApiConnectionService';
-import { FaShoppingCart } from 'react-icons/fa';  
+import { FaTrash } from 'react-icons/fa';  
 
-export const PaginationProductTable = ({ categoryId }) => {
-  const columns = useMemo(() => ProductColumns, []);
+export const PaginationShoppingTable = () => {
+  const columns = useMemo(() => ShoppingColumns, []);
   const [data, setData] = useState([]);
   const [cartItems, setCartItems] = useState([]); 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productsData = await getProductsByCategoryId(categoryId);
-        setData(productsData);
+        const storedCartItems = localStorage.getItem('cartItems');
+        if (storedCartItems) {
+          const cartItems = JSON.parse(storedCartItems);
+          setData(cartItems);
+        }
       } catch (error) {
         console.error('Error fetching products:', error);
       }
     };
 
     fetchData();
-  }, [categoryId]);
+  }, []);
 
   const {
     getTableProps,
@@ -77,26 +79,18 @@ export const PaginationProductTable = ({ categoryId }) => {
     setData(newData);
   }; 
 
-  const addToCart = (product) => {
-    if (product.orderQty > 0 && product.orderQty <= product.stockQty) {
-      const existingProductIndex = cartItems.findIndex(item => item.id === product.id);
-  
-      if (existingProductIndex !== -1) {
+  const removeItem = (product) => {
+    const index = cartItems.findIndex(item => item.id === product.id);
+    if (index !== -1) {
+      const confirmation = window.confirm(`Are you sure you want to remove "${product.name}" from the cart?`);
+      if (confirmation) {
         const updatedCartItems = [...cartItems];
-        updatedCartItems[existingProductIndex].orderQty = product.orderQty;
+        updatedCartItems.splice(index, 1);
         setCartItems(updatedCartItems);
-      } else {
-        const productToAdd = { ...product };
-        const updatedCartItems = [...cartItems, productToAdd];
-        setCartItems(updatedCartItems);
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+        const message = `Item removed`;
+        console.log(message);
       }
-  
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  
-      const message = `Product "${product.name}" - "${product.productCode}" with amount "${product.orderQty}" added to Cart`;
-      console.log(message);
-    } else {
-      console.log("Invalid amount");
     }
   };
 
@@ -143,13 +137,11 @@ export const PaginationProductTable = ({ categoryId }) => {
                               </button>
                             </td>
                   }
-                  else if(cell.column.id === 'addToCart') {
+                  else if(cell.column.id === 'delete') {
                     return <td {...cell.getCellProps()}>
-                              <button  
-                                className={`button ${row.original.orderQty === 0 || row.original.orderQty > row.original.stockQty ? 'error-border' : ''}`}
-                                disabled={row.original.orderQty === 0 || row.original.orderQty > row.original.stockQty}>
-                                <FaShoppingCart size={20}
-                                onClick={() => addToCart(row.original)} />
+                              <button   >
+                                <FaTrash size={20}
+                                onClick={() => removeItem(row.original)} />
                               </button>
                             </td>
                   }
