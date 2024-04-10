@@ -249,7 +249,15 @@ export const PaginationShoppingTable = () => {
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         contentLabel="Generate Order Modal"
-        ariaHideApp={false}  
+        ariaHideApp={false} 
+        style={{
+          content: {
+            width: '600px',
+            height: '500px',
+            margin: 'auto',  
+            overflow: 'auto',  
+          },
+        }}
       >
         {}
         <GenerateOrder
